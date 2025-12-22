@@ -36,7 +36,7 @@ const PORTFOLIO = {
             title: "FraudShield",
             lane: "MLOps",
             tagline: "Real-time fraud detection with delayed label reconciliation",
-            description: "Real-time fraud scoring at ~1.2K TPS per instance (< 50ms p95). Handles the hard part: labels arrive 30 days late. Includes drift detection and incident runbooks.",
+            description: "Real-time fraud scoring at ~1.2K TPS per instance (p95 ≈ 45ms in dev load test). Handles the hard part: labels arrive 30 days late. Includes drift detection and incident runbooks.",
             badges: ["CI-Eval", "Drift", "Cost", "Latency", "Postmortem", "Model Card"],
             links: {
                 caseStudy: "work/fraudshield.html",
