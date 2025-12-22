@@ -1,0 +1,4 @@
+# Trained model artifacts are stored here
+# Run `python scripts/train.py` to generate
+*.joblib
+*.json
