@@ -1,3 +1,0 @@
-"""
-FraudShield Tests Package
-"""

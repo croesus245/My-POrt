@@ -1,3 +1,0 @@
-# Training data stored here
-# Run `python scripts/train.py` to generate
-*.csv
