@@ -68,8 +68,6 @@
                     <span class="badge">Model Card</span>
                 </div>
 
-                <p class="case-credibility"><strong>Everything here is measurable and reproducible:</strong> eval suite, drift thresholds, runbook, and staged incident.</p>
-
                 <div class="case-links">
                     <a href="https://github.com/Croesus245/My-POrt/tree/main/fraudshield" class="btn btn-primary" target="_blank">View Repository →</a>
                     <a href="#demo" class="btn btn-outline">Local Demo</a>
@@ -81,15 +79,15 @@
             <!-- Try It -->
             <section class="case-section try-it-box" id="demo">
                 <h2>Interactive Demo</h2>
-                <p class="demo-disclaimer">⚠️ <strong>Simulated output</strong> — Click to see example API responses. For the real system, clone the repo and run locally.</p>
+                <p class="demo-disclaimer"><strong>Simulated output</strong> — Click to see example API responses. Clone the repo to run for real.</p>
                 <div class="try-it-buttons">
                     <button class="try-it-btn" id="score-btn" onclick="scoreTransaction()">
-                        <span class="try-it-icon">🔍</span>
+                        <span class="try-it-icon">[?]</span>
                         <span class="try-it-label">Score a Transaction</span>
                         <span class="try-it-desc">Example: score + decision + reason codes</span>
                     </button>
                     <button class="try-it-btn" id="drift-btn" onclick="triggerDrift()">
-                        <span class="try-it-icon">📉</span>
+                        <span class="try-it-icon">[!]</span>
                         <span class="try-it-label">Trigger Drift</span>
                         <span class="try-it-desc">Example: PSI spike and alert format</span>
                     </button>

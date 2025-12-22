@@ -116,56 +116,56 @@ const PORTFOLIO = {
     proof: [
         {
             id: "eval-harness",
-            icon: "📊",
+            icon: "[eval]",
             title: "Evaluation Harness",
             description: "Slice metrics, regression tests, CI gates. Every model tested against 12 subgroups.",
             link: "#"
         },
         {
             id: "drift-runbook",
-            icon: "📈",
+            icon: "[drift]",
             title: "Drift Runbook",
             description: "What to monitor, when to alert, how to respond. Decision tree for retrain vs. rollback.",
             link: "#"
         },
         {
             id: "attack-suite",
-            icon: "🛡️",
+            icon: "[sec]",
             title: "Attack Test Suite",
             description: "120+ adversarial test cases: injection, exfil, tool abuse, PII extraction.",
             link: "#"
         },
         {
             id: "rag-eval",
-            icon: "🎯",
+            icon: "[rag]",
             title: "RAG Eval Dashboard",
             description: "Retrieval precision/recall, faithfulness scores, grounding verification.",
             link: "#"
         },
         {
             id: "cost-report",
-            icon: "💰",
+            icon: "[cost]",
             title: "Cost & Latency Report",
             description: "p50/p95 latency, throughput, $/1k requests, optimization levers.",
             link: "#"
         },
         {
             id: "model-card",
-            icon: "📋",
+            icon: "[card]",
             title: "Model Card",
             description: "Performance by slice, known limitations, failure modes, intended use.",
             link: "#"
         },
         {
             id: "datasheet",
-            icon: "📁",
+            icon: "[data]",
             title: "Dataset Datasheet",
             description: "Collection methodology, known biases, split logic, demographic annotations.",
             link: "#"
         },
         {
             id: "postmortem",
-            icon: "🔥",
+            icon: "[post]",
             title: "Incident Postmortem",
             description: "Intentional failure simulation. Root cause, response, prevention.",
             link: "#"
