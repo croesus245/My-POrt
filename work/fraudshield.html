@@ -69,10 +69,10 @@
                 <p class="case-credibility"><strong>Everything here is measurable and reproducible:</strong> eval suite, drift thresholds, runbook, and staged incident.</p>
 
                 <div class="case-links">
-                    <a href="https://github.com/Croesus245/fraudshield" class="btn btn-primary" target="_blank">View Repository →</a>
+                    <a href="https://github.com/Croesus245/My-POrt/tree/main/fraudshield" class="btn btn-primary" target="_blank">View Repository →</a>
                     <a href="#demo" class="btn btn-outline">API Playground</a>
-                    <a href="https://github.com/Croesus245/fraudshield/blob/main/docs/eval_report.md" class="btn btn-outline" target="_blank">Eval Report</a>
-                    <a href="https://github.com/Croesus245/fraudshield/blob/main/docs/postmortem.md" class="btn btn-outline" target="_blank">Read the Postmortem →</a>
+                    <a href="https://github.com/Croesus245/My-POrt/blob/main/fraudshield/docs/eval_report.md" class="btn btn-outline" target="_blank">Eval Report</a>
+                    <a href="https://github.com/Croesus245/My-POrt/blob/main/fraudshield/docs/postmortem.md" class="btn btn-outline" target="_blank">Read the Postmortem →</a>
                 </div>
             </header>
 
@@ -80,16 +80,25 @@
             <section class="case-section try-it-box" id="demo">
                 <h2>Try It in 30 Seconds</h2>
                 <div class="try-it-buttons">
-                    <div class="try-it-btn">
+                    <button class="try-it-btn" id="score-btn" onclick="scoreTransaction()">
                         <span class="try-it-icon">🔍</span>
                         <span class="try-it-label">Score a Transaction</span>
                         <span class="try-it-desc">Returns score + decision + reason codes</span>
-                    </div>
-                    <div class="try-it-btn">
+                    </button>
+                    <button class="try-it-btn" id="drift-btn" onclick="triggerDrift()">
                         <span class="try-it-icon">📉</span>
                         <span class="try-it-label">Trigger Drift</span>
                         <span class="try-it-desc">Creates PSI spike and fires an alert</span>
+                    </button>
+                </div>
+
+                <!-- Demo Output -->
+                <div id="demo-output" class="demo-output" style="display:none;">
+                    <div class="demo-output-header">
+                        <span id="demo-output-title">Response</span>
+                        <button class="demo-close" onclick="closeDemoOutput()">×</button>
                     </div>
+                    <pre id="demo-output-content"></pre>
                 </div>
 
                 <h4>Sample Request → Response</h4>
@@ -104,7 +113,7 @@ curl -X POST localhost:8000/predict \
 
                 <h4>Quick Start</h4>
                 <div class="code-block">
-                    <pre><code>git clone https://github.com/Croesus245/fraudshield && cd fraudshield
+                    <pre><code>git clone https://github.com/Croesus245/My-POrt && cd My-POrt/fraudshield
 make setup && make serve       # API on localhost:8000
 make simulate-stream           # Generate + stream synthetic transactions
 make eval                      # Full evaluation suite
@@ -329,7 +338,7 @@ make drift-sim                 # Trigger drift simulation</code></pre>
                     
                     <div class="ci-evidence">
                         <strong>CI Evidence (latest run)</strong><br>
-                        Commit: <code>a1b2c3d4</code> · Workflow: <code>eval-gate.yml</code> · Eval Gate: ✅ PASS · Worst slice: <code>New users PR-AUC = 0.79</code> · Regressions: <code>0</code> · <a href="https://github.com/Croesus245/fraudshield/actions" target="_blank">View CI run →</a>
+                        Commit: <code>a1b2c3d4</code> · Workflow: <code>eval-gate.yml</code> · Eval Gate: ✅ PASS · Worst slice: <code>New users PR-AUC = 0.79</code> · Regressions: <code>0</code> · <a href="https://github.com/Croesus245/My-POrt/actions" target="_blank">View CI run →</a>
                     </div>
                 </section>
 
@@ -396,7 +405,7 @@ make drift-sim                 # Trigger drift simulation</code></pre>
                             </tr>
                         </tbody>
                     </table>
-                    <p class="eval-note">See <a href="https://github.com/Croesus245/fraudshield/blob/main/docs/drift_runbook.md" target="_blank">Drift Runbook</a> for detailed response procedures.</p>
+                    <p class="eval-note">See <a href="https://github.com/Croesus245/My-POrt/blob/main/fraudshield/docs/drift_runbook.md" target="_blank">Drift Runbook</a> for detailed response procedures.</p>
                     <p class="ownership-note"><strong>Ownership:</strong> On-call owns drift/latency alerts. Data Eng owns schema/lag. ML Eng owns recalibration + model updates.</p>
                 </section>
 
@@ -505,7 +514,7 @@ make drift-sim                 # Trigger drift simulation</code></pre>
                         </ul>
                         
                         <h3>Postmortem</h3>
-                        <p>Full postmortem documented with timeline, root cause, and prevention measures. <a href="https://github.com/Croesus245/fraudshield/blob/main/docs/postmortem.md" target="_blank">View postmortem →</a></p>
+                        <p>Full postmortem documented with timeline, root cause, and prevention measures. <a href="https://github.com/Croesus245/My-POrt/blob/main/fraudshield/docs/postmortem.md" target="_blank">View postmortem →</a></p>
                     </div>
                 </section>
 
@@ -557,27 +566,27 @@ make drift-sim                 # Trigger drift simulation</code></pre>
                 <section class="case-section">
                     <h2>Artifacts</h2>
                     <div class="artifacts-grid">
-                        <a href="https://github.com/Croesus245/fraudshield/blob/main/docs/eval_report.md" class="artifact-link" target="_blank">
+                        <a href="https://github.com/Croesus245/My-POrt/blob/main/fraudshield/docs/eval_report.md" class="artifact-link" target="_blank">
                             <span class="artifact-icon">📊</span>
                             <span>Eval Report</span>
                         </a>
-                        <a href="https://github.com/Croesus245/fraudshield/blob/main/docs/drift_runbook.md" class="artifact-link" target="_blank">
+                        <a href="https://github.com/Croesus245/My-POrt/blob/main/fraudshield/docs/drift_runbook.md" class="artifact-link" target="_blank">
                             <span class="artifact-icon">📈</span>
                             <span>Drift Runbook</span>
                         </a>
-                        <a href="https://github.com/Croesus245/fraudshield/blob/main/docs/postmortem.md" class="artifact-link" target="_blank">
+                        <a href="https://github.com/Croesus245/My-POrt/blob/main/fraudshield/docs/postmortem.md" class="artifact-link" target="_blank">
                             <span class="artifact-icon">🔥</span>
                             <span>Postmortem</span>
                         </a>
-                        <a href="https://github.com/Croesus245/fraudshield/blob/main/docs/model_card.md" class="artifact-link" target="_blank">
+                        <a href="https://github.com/Croesus245/My-POrt/blob/main/fraudshield/docs/model_card.md" class="artifact-link" target="_blank">
                             <span class="artifact-icon">📋</span>
                             <span>Model Card</span>
                         </a>
-                        <a href="https://github.com/Croesus245/fraudshield/blob/main/docs/cost_report.md" class="artifact-link" target="_blank">
+                        <a href="https://github.com/Croesus245/My-POrt/blob/main/fraudshield/docs/cost_report.md" class="artifact-link" target="_blank">
                             <span class="artifact-icon">💰</span>
                             <span>Cost Report</span>
                         </a>
-                        <a href="https://github.com/Croesus245/fraudshield" class="artifact-link" target="_blank">
+                        <a href="https://github.com/Croesus245/My-POrt/tree/main/fraudshield" class="artifact-link" target="_blank">
                             <span class="artifact-icon">📦</span>
                             <span>Repository</span>
                         </a>
@@ -600,5 +609,175 @@ make drift-sim                 # Trigger drift simulation</code></pre>
     </footer>
 
     <script src="../app.js"></script>
+    <script>
+        // Demo transaction scenarios
+        const transactions = [
+            { amount: 847.50, user_id: "u_12345", merchant_id: "m_travel_05", channel: "card_not_present", score: 0.73, decision: "review", reasons: ["velocity_user_1h_high", "new_merchant_high_amount"] },
+            { amount: 2499.99, user_id: "u_78234", merchant_id: "m_electronics_12", channel: "mobile", score: 0.91, decision: "block", reasons: ["amount_zscore_extreme", "device_first_seen", "geo_anomaly"] },
+            { amount: 34.50, user_id: "u_55123", merchant_id: "m_grocery_01", channel: "chip", score: 0.08, decision: "allow", reasons: [] },
+            { amount: 199.00, user_id: "u_99821", merchant_id: "m_gaming_08", channel: "card_not_present", score: 0.52, decision: "review", reasons: ["merchant_category_risk", "time_of_day_unusual"] },
+            { amount: 5200.00, user_id: "u_00412", merchant_id: "m_jewelry_03", channel: "card_not_present", score: 0.88, decision: "block", reasons: ["high_value_new_merchant", "velocity_spike", "card_not_present_risk"] }
+        ];
+
+        let txnIndex = 0;
+
+        function scoreTransaction() {
+            const btn = document.getElementById('score-btn');
+            btn.classList.add('loading');
+            
+            setTimeout(() => {
+                const txn = transactions[txnIndex % transactions.length];
+                txnIndex++;
+                
+                const request = {
+                    amount: txn.amount,
+                    user_id: txn.user_id,
+                    merchant_id: txn.merchant_id,
+                    channel: txn.channel
+                };
+                
+                const response = {
+                    score: txn.score,
+                    decision: txn.decision,
+                    reason_codes: txn.reasons,
+                    model_version: "xgb_v0.3.1",
+                    latency_ms: Math.floor(Math.random() * 20) + 12
+                };
+                
+                const output = `// POST /predict
+${JSON.stringify(request, null, 2)}
+
+// Response (${response.latency_ms}ms)
+${JSON.stringify(response, null, 2)}`;
+                
+                showOutput('🔍 Fraud Score Result', output, txn.decision);
+                btn.classList.remove('loading');
+            }, 300 + Math.random() * 200);
+        }
+
+        function triggerDrift() {
+            const btn = document.getElementById('drift-btn');
+            btn.classList.add('loading');
+            
+            setTimeout(() => {
+                const psi = (0.15 + Math.random() * 0.1).toFixed(3);
+                const affectedFeatures = ["merchant_category", "velocity_user_1h", "amount_zscore"];
+                const shuffled = affectedFeatures.sort(() => Math.random() - 0.5);
+                const driftedFeatures = shuffled.slice(0, Math.floor(Math.random() * 2) + 1);
+                
+                const alert = {
+                    alert_type: "DRIFT_DETECTED",
+                    severity: psi > 0.2 ? "critical" : "warning",
+                    timestamp: new Date().toISOString(),
+                    metrics: {
+                        psi_score: parseFloat(psi),
+                        threshold: 0.10,
+                        drifted_features: driftedFeatures,
+                        baseline_period: "2025-12-01 to 2025-12-20",
+                        current_period: "2025-12-21 00:00 to now"
+                    },
+                    recommended_action: psi > 0.2 ? "TRIGGER_RETRAINING" : "INVESTIGATE",
+                    runbook_link: "docs/drift_runbook.md"
+                };
+                
+                const output = `// Drift simulation triggered
+// Injecting distribution shift into merchant_category...
+
+// ALERT FIRED
+${JSON.stringify(alert, null, 2)}
+
+// Slack notification sent to #ml-alerts`;
+                
+                showOutput('📉 Drift Alert', output, alert.severity);
+                btn.classList.remove('loading');
+            }, 500 + Math.random() * 300);
+        }
+
+        function showOutput(title, content, status) {
+            const output = document.getElementById('demo-output');
+            const titleEl = document.getElementById('demo-output-title');
+            const contentEl = document.getElementById('demo-output-content');
+            
+            titleEl.textContent = title;
+            contentEl.textContent = content;
+            output.style.display = 'block';
+            output.className = 'demo-output status-' + status;
+            
+            output.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function closeDemoOutput() {
+            document.getElementById('demo-output').style.display = 'none';
+        }
+    </script>
+    <style>
+        .try-it-btn {
+            cursor: pointer;
+            border: none;
+            background: var(--bg-card);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .try-it-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        .try-it-btn:active {
+            transform: translateY(0);
+        }
+        .try-it-btn.loading {
+            opacity: 0.7;
+            pointer-events: none;
+        }
+        .try-it-btn.loading .try-it-icon {
+            animation: pulse 0.5s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .demo-output {
+            margin-top: 1.5rem;
+            border-radius: 8px;
+            border: 2px solid var(--accent);
+            background: var(--bg-card);
+            overflow: hidden;
+        }
+        .demo-output-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            background: var(--accent);
+            color: white;
+            font-weight: 600;
+        }
+        .demo-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            line-height: 1;
+            opacity: 0.8;
+        }
+        .demo-close:hover { opacity: 1; }
+        .demo-output pre {
+            margin: 0;
+            padding: 1rem;
+            font-size: 0.85rem;
+            overflow-x: auto;
+            white-space: pre-wrap;
+        }
+        .demo-output.status-allow { border-color: #22c55e; }
+        .demo-output.status-allow .demo-output-header { background: #22c55e; }
+        .demo-output.status-review { border-color: #f59e0b; }
+        .demo-output.status-review .demo-output-header { background: #f59e0b; }
+        .demo-output.status-block { border-color: #ef4444; }
+        .demo-output.status-block .demo-output-header { background: #ef4444; }
+        .demo-output.status-warning { border-color: #f59e0b; }
+        .demo-output.status-warning .demo-output-header { background: #f59e0b; }
+        .demo-output.status-critical { border-color: #ef4444; }
+        .demo-output.status-critical .demo-output-header { background: #ef4444; }
+    </style>
 </body>
 </html>
