@@ -111,11 +111,12 @@
                     </div>
                     <h3>Security Layers</h3>
                     <ul>
-                        <li><strong>Input sanitizer:</strong> ML classifier flags suspicious prompts; heuristic rules catch known patterns. If flagged: restrict retrieval scope, disable tools, require citations.</li>
+                        <li><strong>Input sanitizer:</strong> ML classifier flags suspicious prompts; heuristic rules catch known patterns. If flagged: safe-mode prompt, restrict retrieval scope, disable tools, require citations, log attempt.</li>
                         <li><strong>Permission filter:</strong> Every retrieved chunk is tagged with <code>tenant_id</code> and <code>acl</code>; retrieval rejects cross-tenant chunks before the LLM sees them.</li>
                         <li><strong>Document trust:</strong> All retrieved documents are treated as untrusted input; instructions inside documents are never executed.</li>
                         <li><strong>Tool sandbox:</strong> Tools are allowlisted functions with strict schemas, rate limits, and per-tenant scopes. No shell access.</li>
                         <li><strong>Output validator:</strong> NER-based PII scanner + injection echo classifier + faithfulness check (LLM-judge + citation verification).</li>
+                        <li><strong>Abuse monitoring:</strong> Rate limits + alerting on repeated injection/exfil attempts per user/tenant.</li>
                     </ul>
 
                     <h3>ML Components</h3>
@@ -141,7 +142,7 @@
                         </div>
                         <div class="constraint">
                             <span class="constraint-label">Exfiltration SLO</span>
-                            <span class="constraint-value">0% (CI-gated)</span>
+                            <span class="constraint-value">0% in test suite (CI-gated)</span>
                         </div>
                         <div class="constraint">
                             <span class="constraint-label">Multi-tenant</span>
@@ -179,6 +180,7 @@
                             </tr>
                         </tbody>
                     </table>
+                    <p class="eval-note">Faithfulness: % of responses rated "supported by context" by LLM-judge + citation check on 200-query eval set.</p>
 
                     <h3>Security Testing</h3>
                     <table class="eval-table">
@@ -195,13 +197,13 @@
                                 <td>Direct prompt injection</td>
                                 <td>50</td>
                                 <td>2% (1/50)</td>
-                                <td>✓ Pass</td>
+                                <td>⚠ Warn</td>
                             </tr>
                             <tr>
                                 <td>Indirect injection (via docs)</td>
                                 <td>20</td>
                                 <td>5% (1/20)</td>
-                                <td>✓ Pass</td>
+                                <td>⚠ Warn</td>
                             </tr>
                             <tr>
                                 <td>Data exfiltration</td>
@@ -253,6 +255,7 @@
                         </div>
                     </div>
                     <p class="eval-note" style="margin-top: 1rem;">Measured with retrieval cache ON, tool calls OFF, batch=1, 5-doc context, 1,000 request run on 4-core VM.</p>
+                    <p class="eval-note">Cost includes: embeddings + rerank + LLM answer (excludes document ingestion).</p>
                 </section>
 
                 <section class="case-section">
