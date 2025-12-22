@@ -90,36 +90,36 @@
 
                 <section class="case-section">
                     <h2>Dataset</h2>
+                    <p class="dataset-citation"><strong>Source:</strong> <a href="https://challenge.isic-archive.com/data/" target="_blank">ISIC 2019 Challenge</a> — 25,331 dermoscopic images, 8 diagnostic categories. CC BY-NC 4.0 license. See <a href="https://github.com/Croesus245/My-POrt/blob/main/shiftbench/docs/dataset_datasheet.md" target="_blank">datasheet</a> for full provenance.</p>
                     <div class="architecture-diagram">
                         <pre>
 ┌──────────────────────────────────────────────────────────────┐
 │                      DATA PIPELINE                           │
 ├──────────────┬──────────────┬──────────────┬────────────────┤
-│ Raw Images   │ Metadata     │ Temporal     │ Demographic    │
-│ (ISIC)       │ (dates, geo) │ Split Logic  │ Split Logic    │
+│ ISIC 2019   │ Metadata     │ Shift        │ Stratified     │
+│ (25K imgs)  │ (age, site)  │ Simulation   │ Splits         │
 └──────────────┴──────────────┴──────────────┴────────────────┘
                               │
                               ▼
-        Train: 2015–2018  │  Test: 2019–2022
-        (patient-level deduplication)
+        Train: 18K  │  Test-IID: 2.5K  │  Test-Shift: 4.8K
                         </pre>
                     </div>
                     <div class="constraints-grid">
                         <div class="constraint">
                             <span class="constraint-label">Train Set</span>
-                            <span class="constraint-value">2015–2018</span>
+                            <span class="constraint-value">18,000 images</span>
                         </div>
                         <div class="constraint">
-                            <span class="constraint-label">Test Set</span>
-                            <span class="constraint-value">2019–2022</span>
+                            <span class="constraint-label">Test-IID</span>
+                            <span class="constraint-value">2,500 images</span>
                         </div>
                         <div class="constraint">
-                            <span class="constraint-label">Total Images</span>
-                            <span class="constraint-value">~45,000</span>
+                            <span class="constraint-label">Test-Shift</span>
+                            <span class="constraint-value">4,831 images</span>
                         </div>
                         <div class="constraint">
                             <span class="constraint-label">Classes</span>
-                            <span class="constraint-value">7 lesion types</span>
+                            <span class="constraint-value">Binary (lesion/no)</span>
                         </div>
                     </div>
                 </section>

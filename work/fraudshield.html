@@ -78,17 +78,18 @@
 
             <!-- Try It -->
             <section class="case-section try-it-box" id="demo">
-                <h2>Try It in 30 Seconds</h2>
+                <h2>Interactive Demo</h2>
+                <p class="demo-disclaimer">⚠️ <strong>Simulated output</strong> — Click to see example API responses. For the real system, clone the repo and run locally.</p>
                 <div class="try-it-buttons">
                     <button class="try-it-btn" id="score-btn" onclick="scoreTransaction()">
                         <span class="try-it-icon">🔍</span>
                         <span class="try-it-label">Score a Transaction</span>
-                        <span class="try-it-desc">Returns score + decision + reason codes</span>
+                        <span class="try-it-desc">Example: score + decision + reason codes</span>
                     </button>
                     <button class="try-it-btn" id="drift-btn" onclick="triggerDrift()">
                         <span class="try-it-icon">📉</span>
                         <span class="try-it-label">Trigger Drift</span>
-                        <span class="try-it-desc">Creates PSI spike and fires an alert</span>
+                        <span class="try-it-desc">Example: PSI spike and alert format</span>
                     </button>
                 </div>
 
@@ -337,8 +338,9 @@ make drift-sim                 # Trigger drift simulation</code></pre>
                     <p class="eval-note">CI-ready regression gate: All slices must achieve PR-AUC ≥ 0.75. No slice regression > 5%.</p>
                     
                     <div class="ci-evidence">
-                        <strong>CI Evidence (latest run)</strong><br>
-                        Commit: <code>a1b2c3d4</code> · Workflow: <code>eval-gate.yml</code> · Eval Gate: ✅ PASS · Worst slice: <code>New users PR-AUC = 0.79</code> · Regressions: <code>0</code> · <a href="https://github.com/Croesus245/My-POrt/actions" target="_blank">View CI run →</a>
+                        <strong>Example CI Gate Output</strong><br>
+                        <span style="opacity: 0.7;">(Shown as example—run <code>make eval</code> locally to see real output)</span><br>
+                        Workflow: <code>eval-gate.yml</code> · Eval Gate: ✅ PASS · Worst slice: <code>New users PR-AUC = 0.79</code> · Regressions: <code>0</code>
                     </div>
                 </section>
 
@@ -778,6 +780,25 @@ ${JSON.stringify(alert, null, 2)}
         .demo-output.status-warning .demo-output-header { background: #f59e0b; }
         .demo-output.status-critical { border-color: #ef4444; }
         .demo-output.status-critical .demo-output-header { background: #ef4444; }
+        .demo-disclaimer {
+            background: #fef3c7;
+            border: 1px solid #f59e0b;
+            border-radius: 6px;
+            padding: 0.75rem 1rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            color: #92400e;
+        }
+        .dataset-citation {
+            background: var(--bg-card);
+            border-left: 3px solid var(--accent);
+            padding: 0.75rem 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        .dataset-citation a {
+            color: var(--accent);
+        }
     </style>
 </body>
 </html>
