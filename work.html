@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work — Abdul-Sobur Ayinde</title>
+    <meta name="description" content="Production ML systems, secure LLM applications, and research benchmarks.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div class="header-left">
+                <a href="index.html" class="logo">Abdul-Sobur Ayinde</a>
+                <span class="role">ML Systems Engineer</span>
+            </div>
+            <nav class="nav">
+                <a href="work.html" class="nav-link active">Work</a>
+                <a href="proof.html" class="nav-link">Proof</a>
+                <a href="writing.html" class="nav-link">Writing</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+            <div class="header-right">
+                <a href="mailto:abdulsobur245@gmail.com" class="email-link">abdulsobur245@gmail.com</a>
+                <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+        <nav class="mobile-nav" id="mobile-nav">
+            <a href="work.html" class="mobile-nav-link">Work</a>
+            <a href="proof.html" class="mobile-nav-link">Proof</a>
+            <a href="writing.html" class="mobile-nav-link">Writing</a>
+            <a href="contact.html" class="mobile-nav-link">Contact</a>
+        </nav>
+    </header>
+
+    <main class="page-content">
+        <div class="container">
+            <div class="page-header">
+                <h1 class="page-title">Work</h1>
+                <p class="page-subtitle">Production systems. Research benchmarks. Every project ships with proof.</p>
+            </div>
+
+            <div class="filter-chips">
+                <button class="chip active" data-filter="all">All</button>
+                <button class="chip" data-filter="MLOps">MLOps</button>
+                <button class="chip" data-filter="LLM/GenAI">LLM/GenAI</button>
+                <button class="chip" data-filter="Research">Research</button>
+            </div>
+
+            <h2 class="section-label">Flagship Projects</h2>
+            
+            <div class="projects-grid">
+                <!-- FraudShield -->
+                <article class="project-card" data-lane="MLOps">
+                    <span class="card-lane">MLOps</span>
+                    <h3 class="card-title">FraudShield</h3>
+                    <p class="card-tagline">Real-time fraud detection with delayed label reconciliation</p>
+                    <p class="card-description">Streaming fraud scoring at 10K TPS with < 50ms latency. Handles the hard part: labels arrive 30 days late. Includes drift detection, retraining triggers, and a documented incident simulation.</p>
+                    <div class="card-badges">
+                        <span class="badge">CI-Eval</span>
+                        <span class="badge">Drift</span>
+                        <span class="badge">Cost</span>
+                        <span class="badge">Latency</span>
+                        <span class="badge">Postmortem</span>
+                        <span class="badge">Model Card</span>
+                    </div>
+                    <div class="card-buttons">
+                        <a href="work/fraudshield.html" class="btn btn-primary btn-small">Case Study</a>
+                        <a href="https://github.com/yourname/fraudshield" class="btn btn-outline btn-small" target="_blank">Repo</a>
+                        <a href="#" class="btn btn-outline btn-small">Demo</a>
+                    </div>
+                </article>
+
+                <!-- SecureRAG -->
+                <article class="project-card" data-lane="LLM/GenAI">
+                    <span class="card-lane">LLM/GenAI</span>
+                    <h3 class="card-title">SecureRAG</h3>
+                    <p class="card-tagline">Enterprise RAG with defense-in-depth</p>
+                    <p class="card-description">Multi-tenant document Q&A with prompt injection defense, data exfiltration prevention, and tool sandboxing. 120+ attack tests. 0% exfil success rate. Every response scored for faithfulness.</p>
+                    <div class="card-badges">
+                        <span class="badge">Attack Tests</span>
+                        <span class="badge">Faithfulness</span>
+                        <span class="badge">CI-Eval</span>
+                        <span class="badge">Cost</span>
+                        <span class="badge">Reproducible</span>
+                    </div>
+                    <div class="card-buttons">
+                        <a href="work/securerag.html" class="btn btn-primary btn-small">Case Study</a>
+                        <a href="https://github.com/yourname/securerag" class="btn btn-outline btn-small" target="_blank">Repo</a>
+                        <a href="#" class="btn btn-outline btn-small">Attack Report</a>
+                    </div>
+                </article>
+
+                <!-- ShiftBench -->
+                <article class="project-card" data-lane="Research">
+                    <span class="card-lane">Research</span>
+                    <h3 class="card-title">ShiftBench</h3>
+                    <p class="card-tagline">Medical imaging benchmark under distribution shift</p>
+                    <p class="card-description">Skin lesion classification with explicit temporal (2015–2018 → 2019–2022) and demographic splits. Calibration-aware evaluation. Honest negative results section.</p>
+                    <div class="card-badges">
+                        <span class="badge">Slice Metrics</span>
+                        <span class="badge">Reproducible</span>
+                        <span class="badge">Model Card</span>
+                        <span class="badge">CI-Eval</span>
+                    </div>
+                    <div class="card-buttons">
+                        <a href="work/shiftbench.html" class="btn btn-primary btn-small">Case Study</a>
+                        <a href="https://github.com/yourname/shiftbench" class="btn btn-outline btn-small" target="_blank">Repo</a>
+                        <a href="#" class="btn btn-outline btn-small">Results</a>
+                    </div>
+                </article>
+            </div>
+
+            <h2 class="section-label">Supporting Projects</h2>
+
+            <div class="projects-grid">
+                <!-- Feature Store -->
+                <article class="project-card" data-lane="MLOps">
+                    <span class="card-lane">MLOps</span>
+                    <h3 class="card-title">Feature Store Migration</h3>
+                    <p class="card-description">Migrated batch feature pipeline to streaming (Feast → custom Redis). Reduced feature freshness from 24h to < 5 min. Zero downtime cutover.</p>
+                    <div class="card-badges">
+                        <span class="badge">Architecture</span>
+                        <span class="badge">Zero Downtime</span>
+                    </div>
+                    <div class="card-buttons">
+                        <a href="https://github.com/yourname/feature-store-migration" class="btn btn-outline btn-small" target="_blank">Repo</a>
+                    </div>
+                </article>
+
+                <!-- Prompt Classifier -->
+                <article class="project-card" data-lane="LLM/GenAI">
+                    <span class="card-lane">LLM/GenAI</span>
+                    <h3 class="card-title">Prompt Classifier</h3>
+                    <p class="card-description">Binary classifier to detect prompt injection attempts before they reach the LLM. 97% precision at 92% recall on held-out attack corpus.</p>
+                    <div class="card-badges">
+                        <span class="badge">Model Card</span>
+                        <span class="badge">Eval Suite</span>
+                    </div>
+                    <div class="card-buttons">
+                        <a href="https://github.com/yourname/prompt-classifier" class="btn btn-outline btn-small" target="_blank">Repo</a>
+                    </div>
+                </article>
+
+                <!-- Calibration Toolkit -->
+                <article class="project-card" data-lane="Research">
+                    <span class="card-lane">Research</span>
+                    <h3 class="card-title">Calibration Toolkit</h3>
+                    <p class="card-description">Open-source library for post-hoc calibration (temperature scaling, isotonic regression) with reliability diagrams and ECE reporting.</p>
+                    <div class="card-badges">
+                        <span class="badge">PyPI</span>
+                        <span class="badge">Docs</span>
+                    </div>
+                    <div class="card-buttons">
+                        <a href="https://github.com/yourname/calibration-toolkit" class="btn btn-outline btn-small" target="_blank">Repo</a>
+                        <a href="https://pypi.org/project/calibration-toolkit" class="btn btn-outline btn-small" target="_blank">PyPI</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 Abdul-Sobur Ayinde · <a href="contact.html">Get in touch</a></p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

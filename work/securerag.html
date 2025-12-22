@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureRAG — Case Study</title>
+    <meta name="description" content="Enterprise RAG with defense-in-depth against prompt injection, data exfiltration, and tool abuse.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div class="header-left">
+                <a href="../index.html" class="logo">Abdul-Sobur Ayinde</a>
+                <span class="role">ML Systems Engineer</span>
+            </div>
+            <nav class="nav">
+                <a href="../work.html" class="nav-link active">Work</a>
+                <a href="../proof.html" class="nav-link">Proof</a>
+                <a href="../writing.html" class="nav-link">Writing</a>
+                <a href="../contact.html" class="nav-link">Contact</a>
+            </nav>
+            <div class="header-right">
+                <a href="mailto:abdulsobur245@gmail.com" class="email-link">abdulsobur245@gmail.com</a>
+                <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+        <nav class="mobile-nav" id="mobile-nav">
+            <a href="../work.html" class="mobile-nav-link">Work</a>
+            <a href="../proof.html" class="mobile-nav-link">Proof</a>
+            <a href="../writing.html" class="mobile-nav-link">Writing</a>
+            <a href="../contact.html" class="mobile-nav-link">Contact</a>
+        </nav>
+    </header>
+
+    <main class="case-study">
+        <div class="container">
+            <nav class="breadcrumb">
+                <a href="../work.html">Work</a>
+                <span>/</span>
+                <span>SecureRAG</span>
+            </nav>
+
+            <header class="case-hero">
+                <span class="case-lane">LLM/GenAI</span>
+                <h1 class="case-title">SecureRAG</h1>
+                <p class="case-tagline">Enterprise RAG that assumes the model is compromised and designs permissions around that.</p>
+                
+                <div class="case-badges">
+                    <span class="badge">Attack Tests</span>
+                    <span class="badge">Faithfulness</span>
+                    <span class="badge">CI-Eval</span>
+                    <span class="badge">Cost</span>
+                    <span class="badge">Reproducible</span>
+                </div>
+
+                <div class="case-links">
+                    <a href="https://github.com/yourname/securerag" class="btn btn-primary" target="_blank">View Repository →</a>
+                    <a href="#" class="btn btn-outline">Attack Report</a>
+                    <a href="#" class="btn btn-outline">Eval Dashboard</a>
+                </div>
+            </header>
+
+            <div class="case-content">
+                <section class="case-section">
+                    <h2>Problem</h2>
+                    <p>RAG systems are deployed without adversarial testing. Prompt injection can leak documents, exfiltrate data, or abuse tools. Most portfolios show "RAG chatbot" with zero security.</p>
+                    <p>Production RAG needs permission models, output validation, and attack test suites—not just retrieval metrics.</p>
+                </section>
+
+                <section class="case-section">
+                    <h2>Architecture</h2>
+                    <div class="architecture-diagram">
+                        <pre>
+┌──────────────┐    ┌──────────────┐    ┌──────────────┐
+│ User Query   │───▶│ Input        │───▶│ Query        │
+│              │    │ Sanitizer    │    │ Encoder      │
+└──────────────┘    └──────────────┘    └──────────────┘
+                                               │
+                           ┌───────────────────┘
+                           ▼
+┌──────────────┐    ┌──────────────┐    ┌──────────────┐
+│ Document     │◀───│ Retriever    │───▶│ Permission   │
+│ Store        │    │ (Vector DB)  │    │ Filter       │
+│ (per-tenant) │    └──────────────┘    └──────────────┘
+└──────────────┘                               │
+                           ┌───────────────────┘
+                           ▼
+┌──────────────┐    ┌──────────────┐    ┌──────────────┐
+│ LLM          │◀───│ Prompt       │───▶│ Tool         │
+│ (GPT-4/Local)│    │ Constructor  │    │ Executor     │
+└──────────────┘    └──────────────┘    │ (sandboxed)  │
+       │                                └──────────────┘
+       ▼
+┌──────────────┐    ┌──────────────┐
+│ Output       │───▶│ Response     │
+│ Validator    │    │ (to user)    │
+└──────────────┘    └──────────────┘
+                        </pre>
+                    </div>
+                    <h3>Security Layers</h3>
+                    <ul>
+                        <li><strong>Input sanitizer:</strong> Detect/neutralize injection patterns before retrieval</li>
+                        <li><strong>Permission filter:</strong> Only retrieve documents user has access to</li>
+                        <li><strong>Tool sandbox:</strong> Tools have explicit capabilities; no shell access</li>
+                        <li><strong>Output validator:</strong> Check for PII, injection echoes, hallucination markers</li>
+                    </ul>
+                </section>
+
+                <section class="case-section">
+                    <h2>Constraints</h2>
+                    <div class="constraints-grid">
+                        <div class="constraint">
+                            <span class="constraint-label">Latency</span>
+                            <span class="constraint-value">< 4s p95</span>
+                        </div>
+                        <div class="constraint">
+                            <span class="constraint-label">Cost</span>
+                            <span class="constraint-value">< $0.03/query</span>
+                        </div>
+                        <div class="constraint">
+                            <span class="constraint-label">Exfil Tolerance</span>
+                            <span class="constraint-value">0%</span>
+                        </div>
+                        <div class="constraint">
+                            <span class="constraint-label">Multi-tenant</span>
+                            <span class="constraint-value">Mandatory</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="case-section">
+                    <h2>Evaluation</h2>
+                    <h3>Retrieval & Faithfulness</h3>
+                    <table class="eval-table">
+                        <thead>
+                            <tr>
+                                <th>Metric</th>
+                                <th>Value</th>
+                                <th>Target</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Precision@5</td>
+                                <td>0.74</td>
+                                <td>> 0.70</td>
+                            </tr>
+                            <tr>
+                                <td>Recall@5</td>
+                                <td>0.68</td>
+                                <td>> 0.60</td>
+                            </tr>
+                            <tr>
+                                <td>Faithfulness (LLM-as-judge)</td>
+                                <td>94%</td>
+                                <td>> 90%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Security Testing</h3>
+                    <table class="eval-table">
+                        <thead>
+                            <tr>
+                                <th>Attack Category</th>
+                                <th>Test Cases</th>
+                                <th>Success Rate</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Direct prompt injection</td>
+                                <td>50</td>
+                                <td>2% (1/50)</td>
+                                <td>✓ Pass</td>
+                            </tr>
+                            <tr>
+                                <td>Indirect injection (via docs)</td>
+                                <td>20</td>
+                                <td>5% (1/20)</td>
+                                <td>✓ Pass</td>
+                            </tr>
+                            <tr>
+                                <td>Data exfiltration</td>
+                                <td>20</td>
+                                <td>0% (0/20)</td>
+                                <td>✓ Pass</td>
+                            </tr>
+                            <tr>
+                                <td>Tool abuse / escalation</td>
+                                <td>15</td>
+                                <td>0% (0/15)</td>
+                                <td>✓ Pass</td>
+                            </tr>
+                            <tr>
+                                <td>PII extraction</td>
+                                <td>15</td>
+                                <td>0% (0/15)</td>
+                                <td>✓ Pass</td>
+                            </tr>
+                            <tr class="highlight">
+                                <td><strong>Total</strong></td>
+                                <td><strong>120</strong></td>
+                                <td><strong>1.7%</strong></td>
+                                <td><strong>✓ Pass</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="eval-note">CI gate: Attack success rate < 5%, exfiltration rate = 0%.</p>
+                </section>
+
+                <section class="case-section">
+                    <h2>Cost & Latency</h2>
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <span class="metric-value">1.8s</span>
+                            <span class="metric-label">p50 Latency</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-value">3.6s</span>
+                            <span class="metric-label">p95 Latency</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-value">100</span>
+                            <span class="metric-label">QPS</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-value">$0.024</span>
+                            <span class="metric-label">per query (GPT-4)</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="case-section">
+                    <h2>Failure Modes</h2>
+                    <table class="eval-table">
+                        <thead>
+                            <tr>
+                                <th>Failure Mode</th>
+                                <th>Likelihood</th>
+                                <th>Impact</th>
+                                <th>Mitigation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Novel injection bypasses</td>
+                                <td>Medium</td>
+                                <td>High</td>
+                                <td>Continuous red-teaming, anomaly monitoring</td>
+                            </tr>
+                            <tr>
+                                <td>Hallucination as fact</td>
+                                <td>High</td>
+                                <td>Medium</td>
+                                <td>Faithfulness scoring + citation requirement</td>
+                            </tr>
+                            <tr>
+                                <td>PII in response</td>
+                                <td>Medium</td>
+                                <td>High</td>
+                                <td>Output PII scanner</td>
+                            </tr>
+                            <tr>
+                                <td>Cross-tenant data leak</td>
+                                <td>Low</td>
+                                <td>Critical</td>
+                                <td>Permission filter + tenant isolation</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="residual-risk">
+                        <strong>Residual Risk:</strong> Novel injection techniques may bypass current defenses. Mitigation: Continuous red-teaming, monitor for anomalous outputs, human review for high-stakes queries.
+                    </div>
+                </section>
+
+                <section class="case-section">
+                    <h2>Artifacts</h2>
+                    <div class="artifacts-grid">
+                        <a href="https://github.com/yourname/securerag" class="artifact-link" target="_blank">
+                            <span class="artifact-icon">📦</span>
+                            <span>Repository</span>
+                        </a>
+                        <a href="#" class="artifact-link">
+                            <span class="artifact-icon">🛡️</span>
+                            <span>Attack Report</span>
+                        </a>
+                        <a href="#" class="artifact-link">
+                            <span class="artifact-icon">🎯</span>
+                            <span>Eval Dashboard</span>
+                        </a>
+                        <a href="#" class="artifact-link">
+                            <span class="artifact-icon">🔒</span>
+                            <span>Security Model</span>
+                        </a>
+                        <a href="#" class="artifact-link">
+                            <span class="artifact-icon">📋</span>
+                            <span>Incident Response</span>
+                        </a>
+                        <a href="#" class="artifact-link">
+                            <span class="artifact-icon">💰</span>
+                            <span>Cost Report</span>
+                        </a>
+                    </div>
+                </section>
+            </div>
+
+            <nav class="case-nav">
+                <a href="fraudshield.html" class="case-nav-link">← FraudShield</a>
+                <a href="shiftbench.html" class="case-nav-link">Next: ShiftBench →</a>
+            </nav>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 Your Name · <a href="../contact.html">Get in touch</a></p>
+        </div>
+    </footer>
+
+    <script src="../app.js"></script>
+</body>
+</html>

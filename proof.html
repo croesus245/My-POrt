@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proof — Abdul-Sobur Ayinde</title>
+    <meta name="description" content="Production artifacts: eval harnesses, drift runbooks, attack test suites, cost reports, and model cards.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div class="header-left">
+                <a href="index.html" class="logo">Abdul-Sobur Ayinde</a>
+                <span class="role">ML Systems Engineer</span>
+            </div>
+            <nav class="nav">
+                <a href="work.html" class="nav-link">Work</a>
+                <a href="proof.html" class="nav-link active">Proof</a>
+                <a href="writing.html" class="nav-link">Writing</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+            <div class="header-right">
+                <a href="mailto:abdulsobur245@gmail.com" class="email-link">abdulsobur245@gmail.com</a>
+                <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+        <nav class="mobile-nav" id="mobile-nav">
+            <a href="work.html" class="mobile-nav-link">Work</a>
+            <a href="proof.html" class="mobile-nav-link">Proof</a>
+            <a href="writing.html" class="mobile-nav-link">Writing</a>
+            <a href="contact.html" class="mobile-nav-link">Contact</a>
+        </nav>
+    </header>
+
+    <main class="page-content">
+        <div class="container">
+            <div class="page-header">
+                <h1 class="page-title">Proof</h1>
+                <p class="page-subtitle">The artifacts most portfolios don't have. Every document links to a real file.</p>
+            </div>
+
+            <div class="proof-grid-large">
+                <!-- Evaluation Harness -->
+                <a href="#" class="proof-tile-large">
+                    <div class="proof-icon">📊</div>
+                    <div class="proof-content">
+                        <h2 class="proof-title">Evaluation Harness</h2>
+                        <p class="proof-description">Slice metrics, regression tests, CI gates. Every model tested against 12 subgroups before deployment.</p>
+                        <ul class="proof-details">
+                            <li>Per-slice PR-AUC, F1, calibration</li>
+                            <li>Regression tests with 3% tolerance</li>
+                            <li>CI integration (GitHub Actions)</li>
+                            <li>Automated report generation</li>
+                        </ul>
+                        <span class="proof-link">View Harness →</span>
+                    </div>
+                </a>
+
+                <!-- Drift Runbook -->
+                <a href="#" class="proof-tile-large">
+                    <div class="proof-icon">📈</div>
+                    <div class="proof-content">
+                        <h2 class="proof-title">Drift Runbook</h2>
+                        <p class="proof-description">What to monitor, when to alert, how to respond. Decision tree for retrain vs. rollback.</p>
+                        <ul class="proof-details">
+                            <li>PSI thresholds per feature</li>
+                            <li>KS test alert conditions</li>
+                            <li>Response decision tree</li>
+                            <li>Escalation procedures</li>
+                        </ul>
+                        <span class="proof-link">View Runbook →</span>
+                    </div>
+                </a>
+
+                <!-- Attack Test Suite -->
+                <a href="#" class="proof-tile-large">
+                    <div class="proof-icon">🛡️</div>
+                    <div class="proof-content">
+                        <h2 class="proof-title">Attack Test Suite</h2>
+                        <p class="proof-description">120+ adversarial test cases for LLM security: injection, exfil, tool abuse, PII extraction.</p>
+                        <ul class="proof-details">
+                            <li>50 prompt injection cases</li>
+                            <li>20 indirect injection cases</li>
+                            <li>20 data exfiltration attempts</li>
+                            <li>30 tool abuse / PII cases</li>
+                        </ul>
+                        <span class="proof-link">View Tests →</span>
+                    </div>
+                </a>
+
+                <!-- RAG Eval Dashboard -->
+                <a href="#" class="proof-tile-large">
+                    <div class="proof-icon">🎯</div>
+                    <div class="proof-content">
+                        <h2 class="proof-title">RAG Eval Dashboard</h2>
+                        <p class="proof-description">Retrieval precision/recall, faithfulness scores, grounding verification for every response.</p>
+                        <ul class="proof-details">
+                            <li>P@5 / R@5 retrieval metrics</li>
+                            <li>LLM-as-judge faithfulness</li>
+                            <li>Citation verification</li>
+                            <li>Query-level breakdown</li>
+                        </ul>
+                        <span class="proof-link">View Dashboard →</span>
+                    </div>
+                </a>
+
+                <!-- Cost & Latency Report -->
+                <a href="#" class="proof-tile-large">
+                    <div class="proof-icon">💰</div>
+                    <div class="proof-content">
+                        <h2 class="proof-title">Cost & Latency Report</h2>
+                        <p class="proof-description">p50/p95 latency, throughput benchmarks, $/1k requests, and optimization analysis.</p>
+                        <ul class="proof-details">
+                            <li>Latency percentiles (p50/p95/p99)</li>
+                            <li>Throughput under load</li>
+                            <li>Cost per 1k/1M requests</li>
+                            <li>Optimization recommendations</li>
+                        </ul>
+                        <span class="proof-link">View Report →</span>
+                    </div>
+                </a>
+
+                <!-- Model Card -->
+                <a href="#" class="proof-tile-large">
+                    <div class="proof-icon">📋</div>
+                    <div class="proof-content">
+                        <h2 class="proof-title">Model Card</h2>
+                        <p class="proof-description">Performance by slice, known limitations, failure modes, and intended use documentation.</p>
+                        <ul class="proof-details">
+                            <li>Model details & training data</li>
+                            <li>Performance across subgroups</li>
+                            <li>Known limitations</li>
+                            <li>Ethical considerations</li>
+                        </ul>
+                        <span class="proof-link">View Card →</span>
+                    </div>
+                </a>
+
+                <!-- Dataset Datasheet -->
+                <a href="#" class="proof-tile-large">
+                    <div class="proof-icon">📁</div>
+                    <div class="proof-content">
+                        <h2 class="proof-title">Dataset Datasheet</h2>
+                        <p class="proof-description">Collection methodology, known biases, split logic, and demographic annotations.</p>
+                        <ul class="proof-details">
+                            <li>Data collection process</li>
+                            <li>Labeling methodology</li>
+                            <li>Known biases & limitations</li>
+                            <li>Recommended uses</li>
+                        </ul>
+                        <span class="proof-link">View Datasheet →</span>
+                    </div>
+                </a>
+
+                <!-- Incident Postmortem -->
+                <a href="#" class="proof-tile-large">
+                    <div class="proof-icon">🔥</div>
+                    <div class="proof-content">
+                        <h2 class="proof-title">Incident Postmortem</h2>
+                        <p class="proof-description">Intentional failure simulation with root cause analysis, response timeline, and prevention measures.</p>
+                        <ul class="proof-details">
+                            <li>Incident timeline</li>
+                            <li>Root cause analysis</li>
+                            <li>Response actions</li>
+                            <li>Prevention measures</li>
+                        </ul>
+                        <span class="proof-link">View Postmortem →</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 Abdul-Sobur Ayinde · <a href="contact.html">Get in touch</a></p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
