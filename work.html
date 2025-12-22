@@ -56,6 +56,14 @@
                 <button class="chip" data-filter="Research">Research</button>
             </div>
 
+            <div class="badge-legend">
+                <span><strong>CI-Eval:</strong> PR blocked on metric regression</span>
+                <span><strong>Drift:</strong> PSI/KS/base-rate + runbook</span>
+                <span><strong>Attack Tests:</strong> injection/exfil/tool abuse suite</span>
+                <span><strong>Faithfulness:</strong> grounding/citation checks</span>
+                <span><strong>Reproducible:</strong> one-command rebuild</span>
+            </div>
+
             <h2 class="section-label">Flagship Projects</h2>
             
             <div class="projects-grid">
@@ -63,8 +71,8 @@
                 <article class="project-card" data-lane="MLOps">
                     <span class="card-lane">MLOps</span>
                     <h3 class="card-title">FraudShield</h3>
-                    <p class="card-tagline">Real-time fraud detection with delayed label reconciliation</p>
-                    <p class="card-description">Streaming fraud scoring at 10K TPS with < 50ms latency. Handles the hard part: labels arrive 30 days late. Includes drift detection, retraining triggers, and a documented incident simulation.</p>
+                    <p class="card-tagline">Real-time fraud scoring with delayed-label reconciliation (30–90d)</p>
+                    <p class="card-description">Dev load test: ~1.2K TPS, p95 ~45ms (single instance), scales horizontally. Drift monitoring, CI regression gates, retrain triggers, and incident postmortem.</p>
                     <div class="card-badges">
                         <span class="badge">CI-Eval</span>
                         <span class="badge">Drift</span>
@@ -75,8 +83,8 @@
                     </div>
                     <div class="card-buttons">
                         <a href="work/fraudshield.html" class="btn btn-primary btn-small">Case Study</a>
-                        <a href="https://github.com/yourname/fraudshield" class="btn btn-outline btn-small" target="_blank">Repo</a>
-                        <a href="#" class="btn btn-outline btn-small">Demo</a>
+                        <a href="https://github.com/Croesus245/fraudshield" class="btn btn-outline btn-small" target="_blank">Repo</a>
+                        <a href="work/fraudshield.html#demo" class="btn btn-outline btn-small">Demo</a>
                     </div>
                 </article>
 
@@ -84,8 +92,8 @@
                 <article class="project-card" data-lane="LLM/GenAI">
                     <span class="card-lane">LLM/GenAI</span>
                     <h3 class="card-title">SecureRAG</h3>
-                    <p class="card-tagline">Enterprise RAG with defense-in-depth</p>
-                    <p class="card-description">Multi-tenant document Q&A with prompt injection defense, data exfiltration prevention, and tool sandboxing. 120+ attack tests. 0% exfil success rate. Every response scored for faithfulness.</p>
+                    <p class="card-tagline">Multi-tenant RAG with tenant isolation + sandboxed tools</p>
+                    <p class="card-description">Document Q&A with defense-in-depth. 120+ automated attacks (injection/exfil/tool abuse) with 0% exfil in test suite. Faithfulness + retrieval metrics per response, CI-gated.</p>
                     <div class="card-badges">
                         <span class="badge">Attack Tests</span>
                         <span class="badge">Faithfulness</span>
@@ -95,8 +103,8 @@
                     </div>
                     <div class="card-buttons">
                         <a href="work/securerag.html" class="btn btn-primary btn-small">Case Study</a>
-                        <a href="https://github.com/yourname/securerag" class="btn btn-outline btn-small" target="_blank">Repo</a>
-                        <a href="#" class="btn btn-outline btn-small">Attack Report</a>
+                        <a href="https://github.com/Croesus245/securerag" class="btn btn-outline btn-small" target="_blank">Repo</a>
+                        <a href="https://github.com/Croesus245/securerag/blob/main/docs/attack_report.md" class="btn btn-outline btn-small" target="_blank">Attack Report</a>
                     </div>
                 </article>
 
@@ -104,8 +112,8 @@
                 <article class="project-card" data-lane="Research">
                     <span class="card-lane">Research</span>
                     <h3 class="card-title">ShiftBench</h3>
-                    <p class="card-tagline">Medical imaging benchmark under distribution shift</p>
-                    <p class="card-description">Skin lesion classification with explicit temporal (2015–2018 → 2019–2022) and demographic splits. Calibration-aware evaluation. Honest negative results section.</p>
+                    <p class="card-tagline">Skin lesion benchmark under temporal + demographic shift (public datasets)</p>
+                    <p class="card-description">Train 2015–2018 → test 2019–2022. Calibration-aware and slice-evaluated. Reproducible baselines + results table + negative-results section.</p>
                     <div class="card-badges">
                         <span class="badge">Slice Metrics</span>
                         <span class="badge">Reproducible</span>
@@ -114,8 +122,8 @@
                     </div>
                     <div class="card-buttons">
                         <a href="work/shiftbench.html" class="btn btn-primary btn-small">Case Study</a>
-                        <a href="https://github.com/yourname/shiftbench" class="btn btn-outline btn-small" target="_blank">Repo</a>
-                        <a href="#" class="btn btn-outline btn-small">Results</a>
+                        <a href="https://github.com/Croesus245/shiftbench" class="btn btn-outline btn-small" target="_blank">Repo</a>
+                        <a href="https://github.com/Croesus245/shiftbench/blob/main/results/README.md" class="btn btn-outline btn-small" target="_blank">Results</a>
                     </div>
                 </article>
             </div>
@@ -126,28 +134,28 @@
                 <!-- Feature Store -->
                 <article class="project-card" data-lane="MLOps">
                     <span class="card-lane">MLOps</span>
-                    <h3 class="card-title">Feature Store Migration</h3>
-                    <p class="card-description">Migrated batch feature pipeline to streaming (Feast → custom Redis). Reduced feature freshness from 24h to < 5 min. Zero downtime cutover.</p>
+                    <h3 class="card-title">Streaming Feature Freshness Upgrade</h3>
+                    <p class="card-description">Migrated batch features to streaming aggregates + Redis online cache. Feature freshness: 24h → < 5 min, zero-downtime cutover.</p>
                     <div class="card-badges">
                         <span class="badge">Architecture</span>
                         <span class="badge">Zero Downtime</span>
                     </div>
                     <div class="card-buttons">
-                        <a href="https://github.com/yourname/feature-store-migration" class="btn btn-outline btn-small" target="_blank">Repo</a>
+                        <a href="https://github.com/Croesus245/feature-store-migration" class="btn btn-outline btn-small" target="_blank">Repo</a>
                     </div>
                 </article>
 
                 <!-- Prompt Classifier -->
                 <article class="project-card" data-lane="LLM/GenAI">
                     <span class="card-lane">LLM/GenAI</span>
-                    <h3 class="card-title">Prompt Classifier</h3>
-                    <p class="card-description">Binary classifier to detect prompt injection attempts before they reach the LLM. 97% precision at 92% recall on held-out attack corpus.</p>
+                    <h3 class="card-title">Prompt Injection Guardrail</h3>
+                    <p class="card-description">Lightweight guardrail classifier to block high-risk prompts before LLM execution. 97% precision at 92% recall on held-out attack corpus + benign prompts (10k samples).</p>
                     <div class="card-badges">
                         <span class="badge">Model Card</span>
                         <span class="badge">Eval Suite</span>
                     </div>
                     <div class="card-buttons">
-                        <a href="https://github.com/yourname/prompt-classifier" class="btn btn-outline btn-small" target="_blank">Repo</a>
+                        <a href="https://github.com/Croesus245/prompt-classifier" class="btn btn-outline btn-small" target="_blank">Repo</a>
                     </div>
                 </article>
 
@@ -161,8 +169,7 @@
                         <span class="badge">Docs</span>
                     </div>
                     <div class="card-buttons">
-                        <a href="https://github.com/yourname/calibration-toolkit" class="btn btn-outline btn-small" target="_blank">Repo</a>
-                        <a href="https://pypi.org/project/calibration-toolkit" class="btn btn-outline btn-small" target="_blank">PyPI</a>
+                        <a href="https://github.com/Croesus245/calibration-toolkit" class="btn btn-outline btn-small" target="_blank">Repo</a>
                     </div>
                 </article>
             </div>

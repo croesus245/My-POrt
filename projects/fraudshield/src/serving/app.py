@@ -37,10 +37,11 @@ async def lifespan(app: FastAPI):
     
     logger.info("Starting FraudShield API...")
     
-    model_path = Path("artifacts/models/xgboost_model.json")
+    # Use base name - trainer adds .model/.meta suffixes automatically
+    model_path = Path("artifacts/models/xgboost_model")
     pipeline_path = Path("artifacts/models/feature_pipeline.pkl")
     
-    if model_path.exists() and pipeline_path.exists():
+    if model_path.with_suffix(".model").exists() and pipeline_path.exists():
         predictor = EnhancedPredictor.load(str(model_path), str(pipeline_path))
         logger.info("Model loaded ✓")
     else:

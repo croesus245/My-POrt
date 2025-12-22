@@ -453,6 +453,29 @@ button {
     color: white;
 }
 
+/* Badge Legend */
+.badge-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding: 12px 16px;
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+.badge-legend span {
+    white-space: nowrap;
+}
+
+.badge-legend strong {
+    color: var(--badge-text);
+    font-weight: 600;
+}
+
 /* ============================================
    Projects Grid
    ============================================ */
@@ -926,6 +949,13 @@ button:focus-visible {
     color: var(--text-secondary);
 }
 
+.proof-consistency {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-top: 8px;
+    font-style: italic;
+}
+
 .section-label {
     font-size: 14px;
     font-weight: 600;
@@ -1090,6 +1120,12 @@ button:focus-visible {
     border-radius: 4px;
 }
 
+.writing-read-time {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-left: auto;
+}
+
 .writing-title-large {
     font-size: 24px;
     font-weight: 600;
@@ -1106,7 +1142,17 @@ button:focus-visible {
     font-size: 15px;
     color: var(--text-secondary);
     line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+.writing-takeaway {
+    font-size: 14px;
+    color: var(--text-primary);
     margin-bottom: 20px;
+}
+
+.writing-takeaway strong {
+    color: var(--accent);
 }
 
 .writing-lesson-large {
@@ -1728,3 +1774,342 @@ button:focus-visible {
         padding: 8px 12px;
     }
 }
+
+/* ============================================
+   FraudShield Enhancements
+   ============================================ */
+
+.case-credibility {
+    color: var(--text-secondary);
+    font-size: 14px;
+    margin-bottom: 24px;
+    padding: 12px 16px;
+    background: var(--accent-muted);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+}
+
+.case-credibility strong {
+    color: var(--text-primary);
+}
+
+.try-it-box {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--card-radius);
+    padding: var(--card-padding);
+}
+
+.try-it-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.try-it-item {
+    padding: 16px;
+    background: var(--bg-tertiary);
+    border-radius: 8px;
+}
+
+.try-it-item h4 {
+    margin-bottom: 8px;
+    font-size: 15px;
+}
+
+.try-it-item p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.code-block {
+    background: var(--bg-tertiary);
+    border-radius: 8px;
+    padding: 16px;
+    overflow-x: auto;
+}
+
+.code-block pre {
+    margin: 0;
+}
+
+.code-block code {
+    font-family: 'Monaco', 'Menlo', monospace;
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.problem-facts {
+    margin-bottom: 20px;
+}
+
+.problem-facts li {
+    margin-bottom: 12px;
+    padding-left: 0;
+}
+
+.problem-facts li::before {
+    display: none;
+}
+
+.why-different-box {
+    background: var(--accent-muted);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    padding: 16px 20px;
+    margin-top: 20px;
+}
+
+.why-different-box h4 {
+    color: var(--accent);
+    margin-bottom: 8px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.why-different-box p {
+    margin: 0;
+    color: var(--text-secondary);
+}
+
+.constraint-note {
+    display: block;
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 4px;
+}
+
+.how-measured {
+    background: var(--bg-tertiary);
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.how-measured strong {
+    color: var(--text-primary);
+}
+
+.how-measured ul {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.how-measured ul li {
+    padding-left: 16px;
+    margin-bottom: 6px;
+}
+
+.how-measured ul li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+}
+
+.how-measured p {
+    margin: 8px 0 0 0;
+    font-style: italic;
+}
+
+.assumptions-box {
+    background: var(--bg-secondary);
+    border: 1px dashed var(--border);
+    border-radius: var(--card-radius);
+    padding: var(--card-padding);
+}
+
+.assumptions-box h2 {
+    font-size: 18px;
+    margin-bottom: 16px;
+}
+
+.assumptions-box ul li {
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.assumptions-box ul li strong {
+    color: var(--text-primary);
+}
+
+@media (max-width: 768px) {
+    .try-it-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .try-it-buttons {
+        flex-direction: column;
+    }
+    
+    .reconciliation-flow {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+/* Try It Buttons */
+.try-it-buttons {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.try-it-btn {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background: var(--bg-tertiary);
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.try-it-btn:hover {
+    border-color: var(--accent);
+    background: var(--accent-muted);
+}
+
+.try-it-icon {
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.try-it-label {
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 4px;
+}
+
+.try-it-desc {
+    font-size: 13px;
+    color: var(--text-secondary);
+    text-align: center;
+}
+
+/* Reconciliation Flow */
+.reconciliation-flow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 16px 0 24px;
+    padding: 16px;
+    background: var(--bg-tertiary);
+    border-radius: 8px;
+    overflow-x: auto;
+}
+
+.flow-step {
+    padding: 8px 12px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+.flow-arrow {
+    color: var(--accent);
+    font-size: 18px;
+}
+
+/* Reason Codes */
+.reason-codes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 12px 0;
+}
+
+.reason-code {
+    padding: 6px 12px;
+    background: var(--accent-muted);
+    border: 1px solid var(--accent);
+    border-radius: 4px;
+    font-family: 'Monaco', 'Menlo', monospace;
+    font-size: 12px;
+    color: var(--accent);
+}
+
+/* Eval note small */
+.eval-note-small {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 8px;
+}
+
+/* CI Evidence box */
+.ci-evidence {
+    margin-top: 16px;
+    padding: 12px 16px;
+    background: rgba(34, 197, 94, 0.1);
+    border: 1px solid var(--success);
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.ci-evidence code {
+    background: var(--bg-tertiary);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: 'Monaco', 'Menlo', monospace;
+    font-size: 12px;
+}
+
+.ci-evidence a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.ci-evidence a:hover {
+    text-decoration: underline;
+}
+
+/* Ownership note */
+.ownership-note {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-top: 8px;
+    padding: 8px 12px;
+    background: var(--bg-tertiary);
+    border-radius: 6px;
+}
+
+/* Reason code explanation */
+.reason-code-explain {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin: 12px 0 8px;
+    padding-left: 8px;
+    border-left: 2px solid var(--accent);
+}
+
+.reason-code-explain code {
+    background: var(--bg-tertiary);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+/* Threshold note */
+.threshold-note {
+    margin-bottom: 12px;
+    padding: 8px 12px;
+    background: var(--bg-tertiary);
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+/* Why different box simplified */
+.why-different-box h4 {
+    display: none;
+}
+

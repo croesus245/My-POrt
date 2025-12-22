@@ -51,9 +51,9 @@ class ModelTrainer:
             random_state: Random seed for reproducibility
         """
         self.model_type = model_type
-        self.model_params = model_params or self._default_params()
         self.threshold = threshold
         self.random_state = random_state
+        self.model_params = model_params or self._default_params()
         
         self.model = None
         self._is_fitted = False
@@ -97,7 +97,13 @@ class ModelTrainer:
             self
         """
         logger.info(f"Training {self.model_type} model on {len(X)} samples")
-        logger.info(f"Class distribution: {y.value_counts().to_dict()}")
+        
+        # Handle both Series and ndarray
+        if hasattr(y, 'value_counts'):
+            logger.info(f"Class distribution: {y.value_counts().to_dict()}")
+        else:
+            unique, counts = np.unique(y, return_counts=True)
+            logger.info(f"Class distribution: {dict(zip(unique, counts))}")
         
         self._feature_names = list(X.columns)
         self._training_timestamp = datetime.now()

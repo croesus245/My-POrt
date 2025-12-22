@@ -8,7 +8,7 @@ const PORTFOLIO = {
     // ============================================
     // Personal Info
     // ============================================
-    name: "Your Name",
+    name: "Abdul-Sobur Ayinde",
     role: "ML Systems Engineer",
     headline: "I ship ML systems that survive production.",
     tagline: "Systems that score in 50ms, defend against injection, and document their failures.",
@@ -16,8 +16,8 @@ const PORTFOLIO = {
     resume: "/assets/resume.pdf",
     
     links: {
-        github: "https://github.com/yourname",
-        linkedin: "https://linkedin.com/in/yourname",
+        github: "https://github.com/Croesus245",
+        linkedin: "https://linkedin.com/in/abdulsobur-ayinde",
         twitter: null
     },
     
@@ -39,9 +39,9 @@ const PORTFOLIO = {
             description: "Streaming fraud scoring at 10K TPS with < 50ms latency. Handles the hard part: labels arrive 30 days late. Includes drift detection, retraining triggers, and a documented incident simulation.",
             badges: ["CI-Eval", "Drift", "Cost", "Latency", "Postmortem", "Model Card"],
             links: {
-                caseStudy: "#",
-                repo: "https://github.com/yourname/fraudshield",
-                demo: "#"
+                caseStudy: "work/fraudshield.html",
+                repo: "https://github.com/Croesus245/fraudshield",
+                demo: "work/fraudshield.html#demo"
             }
         },
         {
@@ -52,10 +52,10 @@ const PORTFOLIO = {
             description: "Multi-tenant document Q&A with prompt injection defense, data exfiltration prevention, and tool sandboxing. 120+ attack tests. 0% exfil success rate. Every response scored for faithfulness.",
             badges: ["Attack Tests", "Faithfulness", "CI-Eval", "Cost", "Reproducible"],
             links: {
-                caseStudy: "#",
-                repo: "https://github.com/yourname/securerag",
+                caseStudy: "work/securerag.html",
+                repo: "https://github.com/Croesus245/securerag",
                 demo: null,
-                attackReport: "#"
+                attackReport: "https://github.com/Croesus245/securerag/blob/main/docs/attack_report.md"
             }
         },
         {
@@ -66,9 +66,9 @@ const PORTFOLIO = {
             description: "Skin lesion classification with explicit temporal (2015–2018 → 2019–2022) and demographic splits. Calibration-aware evaluation. Honest negative results section.",
             badges: ["Slice Metrics", "Reproducible", "Model Card", "CI-Eval"],
             links: {
-                caseStudy: "#",
-                repo: "https://github.com/yourname/shiftbench",
-                results: "#"
+                caseStudy: "work/shiftbench.html",
+                repo: "https://github.com/Croesus245/shiftbench",
+                results: "https://github.com/Croesus245/shiftbench/blob/main/results/README.md"
             }
         }
     ],
@@ -84,7 +84,7 @@ const PORTFOLIO = {
             description: "Migrated batch feature pipeline to streaming (Feast → custom Redis). Reduced feature freshness from 24h to < 5 min. Zero downtime cutover.",
             badges: ["Architecture", "Zero Downtime"],
             links: {
-                repo: "https://github.com/yourname/feature-store-migration"
+                repo: "https://github.com/Croesus245/feature-store-migration"
             }
         },
         {
@@ -94,7 +94,7 @@ const PORTFOLIO = {
             description: "Binary classifier to detect prompt injection attempts before they reach the LLM. 97% precision at 92% recall on held-out attack corpus.",
             badges: ["Model Card", "Eval Suite"],
             links: {
-                repo: "https://github.com/yourname/prompt-classifier"
+                repo: "https://github.com/Croesus245/prompt-classifier"
             }
         },
         {
@@ -104,7 +104,7 @@ const PORTFOLIO = {
             description: "Open-source library for post-hoc calibration (temperature scaling, isotonic regression) with reliability diagrams and ECE reporting.",
             badges: ["PyPI", "Docs"],
             links: {
-                repo: "https://github.com/yourname/calibration-toolkit",
+                repo: "https://github.com/Croesus245/calibration-toolkit",
                 pypi: "https://pypi.org/project/calibration-toolkit/"
             }
         }

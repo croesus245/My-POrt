@@ -19,79 +19,64 @@ class ValidationSeverity(Enum):
     ERROR = "error"      # Fail the pipeline
 
 
-@dataclass
 class Constraint:
     """Base class for column constraints."""
-    name: str
-    check: Callable[[pd.Series], bool]
-    severity: ValidationSeverity = ValidationSeverity.ERROR
+    name: str = ""
     message: str = ""
+    severity: ValidationSeverity = ValidationSeverity.ERROR
+    
+    def check(self, series: pd.Series) -> bool:
+        raise NotImplementedError
 
 
-@dataclass
 class Range(Constraint):
     """Value must be within range."""
-    min_val: Optional[float] = None
-    max_val: Optional[float] = None
+    def __init__(self, min_val: Optional[float] = None, max_val: Optional[float] = None):
+        self.min_val = min_val
+        self.max_val = max_val
+        self.name = f"range_{min_val}_{max_val}"
+        self.message = f"Values must be in range [{min_val}, {max_val}]"
     
-    def __post_init__(self):
-        self.name = f"range_{self.min_val}_{self.max_val}"
-        self.message = f"Values must be in range [{self.min_val}, {self.max_val}]"
-        
-        def check(series: pd.Series) -> bool:
-            if self.min_val is not None and series.min() < self.min_val:
-                return False
-            if self.max_val is not None and series.max() > self.max_val:
-                return False
-            return True
-        
-        self.check = check
+    def check(self, series: pd.Series) -> bool:
+        if self.min_val is not None and series.min() < self.min_val:
+            return False
+        if self.max_val is not None and series.max() > self.max_val:
+            return False
+        return True
 
 
-@dataclass  
 class NotNull(Constraint):
     """Column must not have null values."""
-    max_null_rate: float = 0.0
-    
-    def __post_init__(self):
+    def __init__(self, max_null_rate: float = 0.0):
+        self.max_null_rate = max_null_rate
         self.name = "not_null"
-        self.message = f"Null rate must be <= {self.max_null_rate}"
-        
-        def check(series: pd.Series) -> bool:
-            null_rate = series.isnull().mean()
-            return null_rate <= self.max_null_rate
-        
-        self.check = check
+        self.message = f"Null rate must be <= {max_null_rate}"
+    
+    def check(self, series: pd.Series) -> bool:
+        null_rate = series.isnull().mean()
+        return null_rate <= self.max_null_rate
 
 
-@dataclass
 class InSet(Constraint):
     """Value must be in allowed set."""
-    allowed_values: set = field(default_factory=set)
-    
-    def __post_init__(self):
+    def __init__(self, allowed_values: set = None):
+        self.allowed_values = allowed_values or set()
         self.name = "in_set"
         self.message = f"Values must be in {self.allowed_values}"
-        
-        def check(series: pd.Series) -> bool:
-            unique_values = set(series.dropna().unique())
-            return unique_values.issubset(self.allowed_values)
-        
-        self.check = check
+    
+    def check(self, series: pd.Series) -> bool:
+        unique_values = set(series.dropna().unique())
+        return unique_values.issubset(self.allowed_values)
 
 
-@dataclass
 class Unique(Constraint):
     """Column must have unique values."""
-    
-    def __post_init__(self):
+    def __init__(self):
         self.name = "unique"
         self.message = "Values must be unique"
-        
-        def check(series: pd.Series) -> bool:
-            return series.nunique() == len(series)
-        
-        self.check = check
+    
+    def check(self, series: pd.Series) -> bool:
+        return series.nunique() == len(series)
 
 
 @dataclass

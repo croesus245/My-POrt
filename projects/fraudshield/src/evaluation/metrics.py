@@ -29,7 +29,7 @@ from loguru import logger
 
 def compute_metrics(
     y_true: np.ndarray,
-    y_pred: np.ndarray,
+    y_pred: Optional[np.ndarray] = None,
     y_pred_proba: Optional[np.ndarray] = None,
     threshold: float = 0.5,
 ) -> dict[str, float]:

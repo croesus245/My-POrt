@@ -58,9 +58,8 @@ def main():
     model_dir = Path(args.model_dir)
     data_dir = Path(args.data_dir)
     
-    # Load model
-    trainer = ModelTrainer(config=config.get("model", {}))
-    trainer.load(model_dir / "xgboost_model.json")
+    # Load model (classmethod returns new trainer instance)
+    trainer = ModelTrainer.load(model_dir / "xgboost_model.json")
     
     # Load pipeline
     pipeline = FeaturePipeline.load(model_dir / "feature_pipeline.pkl")
@@ -76,6 +75,11 @@ def main():
     
     # Prepare features
     X_test = pipeline.transform(test_df)
+    
+    # Drop non-numeric columns that XGBoost can't handle
+    drop_cols = ["transaction_id"]
+    X_test = X_test.drop(columns=[c for c in drop_cols if c in X_test.columns])
+    
     y_test = test_df["is_fraud"].values
     y_pred_proba = trainer.predict_proba(X_test)
     
@@ -84,7 +88,7 @@ def main():
     # =========================================================================
     logger.info("Computing standard metrics...")
     
-    metrics = compute_metrics(y_test, y_pred_proba)
+    metrics = compute_metrics(y_test, y_pred_proba=y_pred_proba)
     
     print("\n" + "=" * 60)
     print("STANDARD METRICS")
@@ -97,18 +101,25 @@ def main():
     # =========================================================================
     logger.info("Computing slice metrics...")
     
-    slice_columns = config.get("evaluation", {}).get("slices", ["merchant_category"])
-    slice_metrics = compute_slice_metrics(y_test, y_pred_proba, test_df, slice_columns)
+    # Get slice column names (keys from config dict)
+    slice_config = config.get("evaluation", {}).get("slices", {})
+    slice_columns = list(slice_config.keys()) if isinstance(slice_config, dict) else slice_config
+    
+    # Filter to columns that exist in test_df
+    slice_columns = [c for c in slice_columns if c in test_df.columns]
     
     print("\n" + "=" * 60)
     print("SLICE METRICS")
     print("=" * 60)
     
-    for slice_name, metrics in sorted(slice_metrics.items()):
-        print(f"\n  {slice_name}:")
-        print(f"    Support: {metrics['support']:,}")
-        print(f"    ROC-AUC: {metrics['roc_auc']:.4f}")
-        print(f"    F1:      {metrics['f1']:.4f}")
+    for col in slice_columns:
+        # Derive binary predictions for slice analysis
+        y_pred = (y_pred_proba >= 0.5).astype(int)
+        slice_df = compute_slice_metrics(y_test, y_pred, y_pred_proba, test_df[col])
+        
+        print(f"\n  By {col}:")
+        for _, row in slice_df.iterrows():
+            print(f"    {row['slice']}: n={int(row['n_samples'])}, ROC-AUC={row.get('roc_auc', 0):.3f}, F1={row['f1']:.3f}")
     
     # =========================================================================
     # Calibration Analysis
@@ -133,7 +144,7 @@ def main():
     # =========================================================================
     logger.info("Analyzing thresholds...")
     
-    thresholds = compute_threshold_analysis(y_test, y_pred_proba)
+    thresholds_df = compute_threshold_analysis(y_test, y_pred_proba)
     
     print("\n" + "=" * 60)
     print("THRESHOLD ANALYSIS")
@@ -141,8 +152,8 @@ def main():
     print(f"  {'Threshold':>10} {'Precision':>10} {'Recall':>10} {'F1':>10}")
     print("  " + "-" * 44)
     
-    for t in thresholds:
-        print(f"  {t['threshold']:>10.2f} {t['precision']:>10.3f} {t['recall']:>10.3f} {t['f1']:>10.3f}")
+    for _, row in thresholds_df.iterrows():
+        print(f"  {row['threshold']:>10.2f} {row['precision']:>10.3f} {row['recall']:>10.3f} {row['f1']:>10.3f}")
     
     # =========================================================================
     # Stress Tests
@@ -187,7 +198,16 @@ def main():
     # =========================================================================
     logger.info("Generating report...")
     
-    report = generate_report(y_test, y_pred_proba, test_df, slice_columns)
+    # Build slice_columns dict for report
+    slice_dict = {col: test_df[col] for col in slice_columns} if slice_columns else None
+    
+    report = generate_report(
+        y_true=y_test,
+        y_pred_proba=y_pred_proba,
+        model_version="v1",
+        threshold=0.5,
+        slice_columns=slice_dict
+    )
     
     # Save report
     output_dir = Path(args.output_dir)
@@ -200,7 +220,7 @@ def main():
             "timestamp": datetime.now().isoformat(),
             "test_size": len(test_df),
             "fraud_rate": float(y_test.mean()),
-            "metrics": report.overall_metrics,
+            "metrics": report.global_metrics,
             "calibration": report.calibration,
             "slice_metrics": report.slice_metrics,
         }, f, default_flow_style=False)

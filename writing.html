@@ -55,6 +55,7 @@
                     <div class="writing-meta">
                         <span class="writing-date">December 2025</span>
                         <span class="writing-tag">Evaluation</span>
+                        <span class="writing-read-time">6 min read</span>
                     </div>
                     <h2 class="writing-title-large">Why Offline Metrics Lie</h2>
                     <p class="writing-subtitle-large">An experiment in deceptive validation</p>
@@ -62,10 +63,11 @@
                         Built a churn model that hit 0.92 AUC on holdout. Deployed it. Watched it fail spectacularly on month-2 data. 
                         Here's why stratified random splits hide temporal drift, and how I redesigned my eval suite to catch this before production.
                     </p>
+                    <p class="writing-takeaway"><strong>Key takeaway:</strong> Time splits or you're lying to yourself.</p>
                     <div class="writing-lesson-large">
                         <strong>What I'd do differently:</strong> Use time-based splits from day one. Never trust random holdout again. Add a "future simulation" test that holds out the most recent 20% by timestamp.
                     </div>
-                    <a href="#" class="btn btn-primary">Read Full Post →</a>
+                    <a href="https://github.com/Croesus245/blog/blob/main/posts/why-offline-metrics-lie.md" class="btn btn-primary" target="_blank">Read Full Post →</a>
                 </article>
 
                 <!-- Post 2 -->
@@ -73,6 +75,7 @@
                     <div class="writing-meta">
                         <span class="writing-date">November 2025</span>
                         <span class="writing-tag">MLOps</span>
+                        <span class="writing-read-time">8 min read</span>
                     </div>
                     <h2 class="writing-title-large">How I Design Eval Suites and CI Gates</h2>
                     <p class="writing-subtitle-large">A practical template you can steal</p>
@@ -80,10 +83,11 @@
                         Every model I ship passes 4 gates: slice regression (no subgroup drops > 3%), calibration check (ECE < 0.1), 
                         latency test (p95 < threshold), and cost ceiling (< $X per 1k predictions). Here's the exact YAML config and why each gate exists.
                     </p>
+                    <p class="writing-takeaway"><strong>Key takeaway:</strong> CI gates are the only defense against silent model regression.</p>
                     <div class="writing-lesson-large">
                         <strong>What I'd do differently:</strong> Add distribution shift simulation as a 5th gate. Synthetically perturb the test set and require graceful degradation.
                     </div>
-                    <a href="#" class="btn btn-primary">Read Full Post →</a>
+                    <a href="https://github.com/Croesus245/blog/blob/main/posts/eval-suites-ci-gates.md" class="btn btn-primary" target="_blank">Read Full Post →</a>
                 </article>
 
                 <!-- Post 3 -->
@@ -91,17 +95,19 @@
                     <div class="writing-meta">
                         <span class="writing-date">October 2025</span>
                         <span class="writing-tag">LLM Security</span>
+                        <span class="writing-read-time">10 min read</span>
                     </div>
                     <h2 class="writing-title-large">Security Failures in LLM Apps</h2>
                     <p class="writing-subtitle-large">What I learned from 100+ attack tests</p>
                     <p class="writing-excerpt">
-                        Prompt injection, indirect injection via documents, tool abuse, PII exfiltration. I tested them all against a production RAG system. 
+                        Prompt injection, indirect injection via documents, tool abuse, PII exfiltration. I tested them all against a secure multi-tenant RAG system. 
                         Here's what worked, what didn't, and the 4 defense layers that survived real adversarial pressure.
                     </p>
+                    <p class="writing-takeaway"><strong>Key takeaway:</strong> Assume the LLM is compromised. Design permissions as if it's an untrusted user.</p>
                     <div class="writing-lesson-large">
                         <strong>What I'd do differently:</strong> Assume the model is compromised from the start. Design the permission system as if the LLM is an untrusted user, not a trusted component.
                     </div>
-                    <a href="#" class="btn btn-primary">Read Full Post →</a>
+                    <a href="https://github.com/Croesus245/blog/blob/main/posts/security-failures-llm-apps.md" class="btn btn-primary" target="_blank">Read Full Post →</a>
                 </article>
             </div>
         </div>

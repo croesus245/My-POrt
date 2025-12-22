@@ -63,12 +63,17 @@ def main():
     logger.info(f"Features: {X_train.shape[1]}")
 
     # ===== 4. TRAIN MODEL =====
-    trainer = ModelTrainer(config.get("model", {}))
-    trainer.train(X_train, y_train, X_test, y_test)
+    model_config = config.get("model", {})
+    trainer = ModelTrainer(
+        model_type=model_config.get("type", "xgboost"),
+        model_params=model_config.get("params"),
+        threshold=model_config.get("threshold", 0.5),
+    )
+    trainer.fit(X_train, y_train, eval_set=(X_test, y_test))
 
     # ===== 5. EVALUATE =====
-    y_pred = trainer.predict_proba(X_test)
-    metrics = compute_metrics(y_test, y_pred)
+    y_proba = trainer.predict_proba(X_test)
+    metrics = compute_metrics(y_test, y_pred_proba=y_proba, threshold=model_config.get("threshold", 0.5))
     
     print("\n" + "=" * 40)
     print("RESULTS")
