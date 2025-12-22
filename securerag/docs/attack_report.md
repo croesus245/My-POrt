@@ -30,8 +30,10 @@
    - [JailbreakBench](https://jailbreakbench.github.io/) standardized attacks
    - HuggingFace `jailbreak_llms` dataset
 
-2. **Custom attacks:**
-   - 200+ hand-crafted injections targeting our specific architecture
+2. **Custom attacks (see `tests/attacks/`):**
+   - `test_injection.py`: 100+ injection variants (override, delimiter, extraction)
+   - `test_jailbreak.py`: DAN variants, roleplay, mode activation attacks
+   - `test_exfiltration.py`: Secret/PII detection and redaction tests
    - Multi-turn conversation attacks
    - Encoded payload variants (base64, unicode, leetspeak)
 
