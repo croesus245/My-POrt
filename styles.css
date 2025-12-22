@@ -970,7 +970,13 @@ button:focus-visible {
     margin-top: 0;
 }
 
-/* Hero CTA */
+/* Hero CTA - Above fold */
+.hero-cta-top {
+    margin-top: 24px;
+    margin-bottom: 32px;
+}
+
+/* Hero CTA - Below projects */
 .hero-cta {
     display: flex;
     gap: 16px;

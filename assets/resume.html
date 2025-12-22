@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abdul-Sobur Ayinde — Resume</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.5;
+            color: #1a1a1a;
+            max-width: 8.5in;
+            margin: 0 auto;
+            padding: 0.5in;
+            font-size: 11pt;
+        }
+        @media print {
+            body { padding: 0; }
+        }
+        a { color: #0066cc; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        
+        /* Header */
+        .header { text-align: center; margin-bottom: 1.5em; border-bottom: 2px solid #1a1a1a; padding-bottom: 1em; }
+        .name { font-size: 24pt; font-weight: 700; margin-bottom: 0.25em; }
+        .title { font-size: 14pt; color: #444; margin-bottom: 0.5em; }
+        .contact { font-size: 10pt; color: #555; }
+        .contact a { margin: 0 0.5em; }
+        
+        /* Sections */
+        section { margin-bottom: 1.25em; }
+        h2 { font-size: 12pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid #ccc; padding-bottom: 0.25em; margin-bottom: 0.75em; color: #333; }
+        
+        /* Projects */
+        .project { margin-bottom: 1em; }
+        .project-header { display: flex; justify-content: space-between; align-items: baseline; }
+        .project-title { font-weight: 600; font-size: 11pt; }
+        .project-link { font-size: 9pt; color: #666; }
+        .project-desc { font-size: 10pt; color: #333; margin-top: 0.25em; }
+        .project-bullets { margin-top: 0.25em; padding-left: 1.25em; font-size: 10pt; }
+        .project-bullets li { margin-bottom: 0.15em; }
+        
+        /* Skills */
+        .skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5em; font-size: 10pt; }
+        .skill-row { display: flex; }
+        .skill-label { font-weight: 600; width: 120px; color: #444; }
+        .skill-value { flex: 1; }
+        
+        /* Education */
+        .edu-item { margin-bottom: 0.5em; }
+        .edu-title { font-weight: 600; }
+        .edu-detail { font-size: 10pt; color: #555; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="name">Abdul-Sobur Ayinde</div>
+        <div class="title">ML Systems Engineer</div>
+        <div class="contact">
+            <a href="mailto:abdulsobur245@gmail.com">abdulsobur245@gmail.com</a> ·
+            <a href="https://github.com/Croesus245/My-POrt">github.com/Croesus245/My-POrt</a> ·
+            <a href="https://linkedin.com/in/abdulsobur-ayinde">linkedin.com/in/abdulsobur-ayinde</a> ·
+            <a href="https://croesusml.vercel.app">croesusml.vercel.app</a>
+        </div>
+    </header>
+
+    <section>
+        <h2>Summary</h2>
+        <p>ML engineer focused on production systems that survive real-world conditions. Experience building fraud detection pipelines, secure LLM applications, and ML evaluation infrastructure. Every project ships with CI-gated evals, drift monitoring, and documented failure modes.</p>
+    </section>
+
+    <section>
+        <h2>Technical Projects</h2>
+        
+        <div class="project">
+            <div class="project-header">
+                <span class="project-title">FraudShield — Real-time Fraud Detection System</span>
+                <span class="project-link">github.com/Croesus245/My-POrt/fraudshield</span>
+            </div>
+            <ul class="project-bullets">
+                <li>Built streaming fraud scoring API achieving ~1.2K TPS per instance with &lt;50ms p95 latency</li>
+                <li>Designed delayed-label reconciliation pipeline handling 30-day label lag via proxy labels + periodic reconciliation</li>
+                <li>Implemented automated drift detection with PSI monitoring, retraining triggers, and CI-gated model promotion</li>
+                <li>Created slice-based evaluation harness testing model performance across transaction types, amounts, and demographics</li>
+                <li>Documented complete incident simulation with staged outage, response timeline, and postmortem analysis</li>
+            </ul>
+        </div>
+
+        <div class="project">
+            <div class="project-header">
+                <span class="project-title">SecureRAG — Defense-in-Depth RAG System</span>
+                <span class="project-link">github.com/Croesus245/My-POrt/securerag</span>
+            </div>
+            <ul class="project-bullets">
+                <li>Built multi-tenant document Q&A system with layered security: input validation, permission filtering, tool sandboxing</li>
+                <li>Developed attack test suite with 1,400+ adversarial cases (prompt injection, jailbreak, data exfiltration, tool abuse)</li>
+                <li>Achieved 100% block rate on data exfiltration attempts, 95.9% overall attack mitigation</li>
+                <li>Implemented faithfulness scoring to detect hallucinations and unsupported claims in LLM responses</li>
+            </ul>
+        </div>
+
+        <div class="project">
+            <div class="project-header">
+                <span class="project-title">ShiftBench — Distribution Shift Benchmark</span>
+                <span class="project-link">github.com/Croesus245/My-POrt/shiftbench</span>
+            </div>
+            <ul class="project-bullets">
+                <li>Created skin lesion classification benchmark with explicit temporal (2015–2018 → 2019–2022) and demographic splits</li>
+                <li>Documented negative results: models overfit to temporal artifacts, calibration degraded under shift</li>
+                <li>Built reproducible evaluation pipeline with slice metrics, calibration curves, and uncertainty quantification</li>
+                <li>Published dataset datasheet, model card, and reproduction guide following ML documentation best practices</li>
+            </ul>
+        </div>
+    </section>
+
+    <section>
+        <h2>Technical Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-row">
+                <span class="skill-label">ML Frameworks:</span>
+                <span class="skill-value">PyTorch, scikit-learn, XGBoost, LightGBM, Hugging Face</span>
+            </div>
+            <div class="skill-row">
+                <span class="skill-label">MLOps:</span>
+                <span class="skill-value">MLflow, DVC, Weights & Biases, GitHub Actions, Docker</span>
+            </div>
+            <div class="skill-row">
+                <span class="skill-label">Data:</span>
+                <span class="skill-value">PostgreSQL, Redis, Kafka, Pandas, NumPy, Polars</span>
+            </div>
+            <div class="skill-row">
+                <span class="skill-label">Infrastructure:</span>
+                <span class="skill-value">FastAPI, AWS (S3, Lambda, SageMaker), Kubernetes, Terraform</span>
+            </div>
+            <div class="skill-row">
+                <span class="skill-label">LLM/GenAI:</span>
+                <span class="skill-value">LangChain, OpenAI API, RAG architectures, prompt engineering</span>
+            </div>
+            <div class="skill-row">
+                <span class="skill-label">Languages:</span>
+                <span class="skill-value">Python, SQL, Bash, JavaScript</span>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>What I Ship With Every Project</h2>
+        <ul class="project-bullets">
+            <li><strong>CI-Gated Evals:</strong> Automated slice metrics, regression tests, and quality gates before any model ships</li>
+            <li><strong>Drift Monitoring:</strong> PSI tracking, alert thresholds, and documented response runbooks</li>
+            <li><strong>Cost Reports:</strong> Latency benchmarks, infrastructure costs, and scaling projections</li>
+            <li><strong>Model Cards:</strong> Intended use, limitations, ethical considerations, and failure modes</li>
+            <li><strong>Postmortems:</strong> Real or simulated incidents with root cause analysis and corrective actions</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Education</h2>
+        <div class="edu-item">
+            <div class="edu-title">Self-Directed ML Systems Education</div>
+            <div class="edu-detail">Continuous learning through building production-grade systems, open-source contributions, and technical writing</div>
+        </div>
+    </section>
+
+    <footer style="margin-top: 2em; text-align: center; font-size: 9pt; color: #888;">
+        Portfolio: croesusml.vercel.app · Updated December 2024
+    </footer>
+</body>
+</html>
