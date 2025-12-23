@@ -40,7 +40,7 @@ const PORTFOLIO = {
             badges: ["CI-Eval", "Drift", "Cost", "Latency", "Postmortem", "Model Card"],
             links: {
                 caseStudy: "work/fraudshield.html",
-                repo: "https://github.com/Croesus245/My-POrt/tree/main/fraudshield",
+                repo: "https://github.com/Croesus245/My-POrt/tree/main/projects/fraudshield",
                 demo: "work/fraudshield.html#demo"
             }
         },
