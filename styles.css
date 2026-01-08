@@ -212,7 +212,15 @@ button {
     display: none;
     flex-direction: column;
     gap: 5px;
-    padding: 8px;
+    padding: 12px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    z-index: 101;
+    min-width: 44px;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
 }
 
 .hamburger span {
