@@ -10,8 +10,9 @@ const PORTFOLIO = {
     // ============================================
     name: "Abdul-Sobur Ayinde",
     role: "ML Systems Engineer",
-    headline: "I ship ML systems that survive production.",
+    headline: "I build production-grade ML systems with measurable proof.",
     tagline: "Systems that score in 50ms, defend against injection, and document their failures.",
+    truthAnchor: "Benchmarks from synthetic load tests. Methodology and artifacts linked.",
     email: "hello@yourdomain.com",
     resume: "/assets/resume.pdf",
     
@@ -36,7 +37,7 @@ const PORTFOLIO = {
             title: "FraudShield",
             lane: "MLOps",
             tagline: "Real-time fraud detection with delayed label reconciliation",
-            description: "Real-time fraud scoring at ~1.2K TPS per instance (p95 ≈ 45ms in dev load test). Handles the hard part: labels arrive 30 days late. Includes drift detection and incident runbooks.",
+            description: "Real-time fraud scoring benchmarked at ~1.2K TPS (p95 ≈ 45ms, synthetic load test). Handles delayed labels (30–90 days), drift detection, and incident runbooks.",
             badges: ["CI-Eval", "Drift", "Cost", "Latency", "Postmortem", "Model Card"],
             links: {
                 caseStudy: "work/fraudshield.html",

@@ -65,6 +65,10 @@
                     <span class="badge">Reproducible</span>
                 </div>
 
+                <div class="validation-context">
+                    <strong>📊 Validation Environment:</strong> 120+ attack tests run against local deployment with synthetic documents. All security claims are from automated test suite, not production traffic.
+                </div>
+
                 <div class="case-links">
                     <a href="https://github.com/Croesus245/My-POrt/tree/main/securerag" class="btn btn-primary" target="_blank">View Repository →</a>
                     <a href="https://github.com/Croesus245/My-POrt/blob/main/securerag/docs/attack_report.md" class="btn btn-outline" target="_blank">Attack Report</a>
@@ -299,6 +303,43 @@
                     <div class="residual-risk">
                         <strong>Residual Risk:</strong> Novel injection techniques may bypass current defenses. Mitigation: Continuous red-teaming, monitor for anomalous outputs, human review for high-stakes queries.
                     </div>
+                </section>
+
+                <!-- Visual Proof -->
+                <section class="case-section" id="visual-proof">
+                    <h2>Visual Proof</h2>
+                    <p class="proof-intro">Screenshots from actual attack tests and evaluation runs.</p>
+                    
+                    <div class="proof-gallery">
+                        <figure class="proof-figure">
+                            <div class="proof-placeholder" data-type="video">
+                                <span class="placeholder-icon">🎬</span>
+                                <span class="placeholder-label">Attack Tests Running</span>
+                                <code>pytest tests/attacks/</code>
+                            </div>
+                            <figcaption>GIF: Injection/exfil tests running with pass/fail output</figcaption>
+                        </figure>
+                        
+                        <figure class="proof-figure">
+                            <div class="proof-placeholder" data-type="table">
+                                <span class="placeholder-icon">📊</span>
+                                <span class="placeholder-label">Attack Report Summary</span>
+                                <code>docs/attack_report.md</code>
+                            </div>
+                            <figcaption>Attack category breakdown: 120 tests, 0% exfil</figcaption>
+                        </figure>
+                        
+                        <figure class="proof-figure">
+                            <div class="proof-placeholder" data-type="dashboard">
+                                <span class="placeholder-icon">📈</span>
+                                <span class="placeholder-label">Eval Dashboard</span>
+                                <code>docs/eval_dashboard.md</code>
+                            </div>
+                            <figcaption>Faithfulness + retrieval metrics per query type</figcaption>
+                        </figure>
+                    </div>
+                    
+                    <p class="proof-note"><em>Run <code>pytest tests/attacks/ -v</code> locally to see real output. Screenshots coming soon.</em></p>
                 </section>
 
                 <section class="case-section">

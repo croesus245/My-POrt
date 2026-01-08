@@ -2124,3 +2124,158 @@ button:focus-visible {
     display: none;
 }
 
+/* ============================================
+   Credibility Gap Patch - New Components
+   ============================================ */
+
+/* Truth Anchor - the single line that kills the "lie" interpretation */
+.hero-truth-anchor,
+.page-truth-anchor {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-top: 8px;
+    font-style: italic;
+}
+
+.hero-truth-anchor {
+    margin-bottom: 24px;
+}
+
+.page-truth-anchor {
+    margin-top: 12px;
+}
+
+/* Validation Context Box - reads like engineering, not insecurity */
+.validation-context {
+    margin-top: 20px;
+    padding: 14px 18px;
+    background: rgba(249, 115, 22, 0.06);
+    border: 1px solid rgba(249, 115, 22, 0.15);
+    border-radius: 8px;
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.validation-context strong {
+    color: var(--accent);
+}
+
+.validation-context a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.validation-context a:hover {
+    text-decoration: underline;
+}
+
+/* Benchmark Methodology Box */
+.benchmark-methodology {
+    margin-bottom: 20px;
+    padding: 14px 18px;
+    background: var(--bg-tertiary);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.benchmark-methodology strong {
+    color: var(--text-primary);
+}
+
+/* Visual Proof Gallery */
+.proof-intro {
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+}
+
+.proof-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.proof-figure {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--card-radius);
+    overflow: hidden;
+    margin: 0;
+}
+
+.proof-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 140px;
+    padding: 20px;
+    background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-secondary) 100%);
+    text-align: center;
+    gap: 8px;
+}
+
+.proof-placeholder .placeholder-icon {
+    font-size: 32px;
+    opacity: 0.7;
+}
+
+.proof-placeholder .placeholder-label {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 14px;
+}
+
+.proof-placeholder code {
+    font-size: 11px;
+    color: var(--text-muted);
+    background: var(--bg-card);
+    padding: 3px 8px;
+    border-radius: 4px;
+}
+
+.proof-figure figcaption {
+    padding: 12px 14px;
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.4;
+    border-top: 1px solid var(--border);
+}
+
+.proof-note {
+    font-size: 13px;
+    color: var(--text-muted);
+    padding: 10px 14px;
+    background: var(--bg-tertiary);
+    border-radius: 6px;
+}
+
+.proof-note code {
+    background: var(--bg-card);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 12px;
+    color: var(--accent);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .proof-gallery {
+        grid-template-columns: 1fr;
+    }
+    
+    .validation-context,
+    .benchmark-methodology {
+        font-size: 13px;
+        padding: 12px 14px;
+    }
+    
+    .hero-truth-anchor,
+    .page-truth-anchor {
+        font-size: 13px;
+    }
+}
