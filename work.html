@@ -197,6 +197,24 @@
                     mobileNav.classList.toggle('active');
                 };
             }
+            
+            // Filter chips
+            var chips = document.querySelectorAll('.chip');
+            var cards = document.querySelectorAll('.project-card');
+            chips.forEach(function(chip) {
+                chip.onclick = function() {
+                    var filter = this.getAttribute('data-filter');
+                    chips.forEach(function(c) { c.classList.remove('active'); });
+                    this.classList.add('active');
+                    cards.forEach(function(card) {
+                        if (filter === 'all' || card.getAttribute('data-lane') === filter) {
+                            card.classList.remove('hidden');
+                        } else {
+                            card.classList.add('hidden');
+                        }
+                    });
+                };
+            });
         });
     </script>
 </body>
