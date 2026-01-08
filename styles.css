@@ -264,11 +264,17 @@ button {
     display: flex;
     flex-direction: column;
     gap: 12px;
+}
+
+/* Force hide mobile nav on desktop */
 @media (min-width: 769px) {
     .mobile-nav {
         display: none !important;
     }
-}
+    
+    .hamburger {
+        display: none !important;
+    }
 }
 
 /* ============================================
