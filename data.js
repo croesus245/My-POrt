@@ -17,7 +17,7 @@ const PORTFOLIO = {
     resume: "/assets/resume.pdf",
     
     links: {
-        github: "https://github.com/Croesus245/My-POrt",
+        github: "https://github.com/croesus245",
         linkedin: "https://linkedin.com/in/abdulsobur-ayinde",
         twitter: null
     },
@@ -41,7 +41,7 @@ const PORTFOLIO = {
             badges: ["CI-Eval", "Drift", "Cost", "Latency", "Postmortem", "Model Card"],
             links: {
                 caseStudy: "work/fraudshield.html",
-                repo: "https://github.com/Croesus245/My-POrt/tree/main/projects/fraudshield",
+                repo: "https://github.com/croesus245/fraudshield-mlops-system",
                 demo: "work/fraudshield.html#demo"
             }
         },
@@ -54,9 +54,9 @@ const PORTFOLIO = {
             badges: ["Attack Tests", "Faithfulness", "CI-Eval", "Cost", "Reproducible"],
             links: {
                 caseStudy: "work/securerag.html",
-                repo: "https://github.com/Croesus245/My-POrt/tree/main/securerag",
+                repo: "https://github.com/croesus245/securerag-defense-in-depth",
                 demo: null,
-                attackReport: "https://github.com/Croesus245/My-POrt/blob/main/securerag/docs/attack_report.md"
+                attackReport: "https://github.com/croesus245/securerag-defense-in-depth/blob/main/docs/attack_report.md"
             }
         },
         {
@@ -68,8 +68,8 @@ const PORTFOLIO = {
             badges: ["Slice Metrics", "Reproducible", "Model Card", "CI-Eval"],
             links: {
                 caseStudy: "work/shiftbench.html",
-                repo: "https://github.com/Croesus245/My-POrt/tree/main/shiftbench",
-                results: "https://github.com/Croesus245/My-POrt/blob/main/shiftbench/results/README.md"
+                repo: "https://github.com/croesus245/shiftbench-benchmark",
+                results: "https://github.com/croesus245/shiftbench-benchmark/blob/main/results/README.md"
             }
         }
     ],
