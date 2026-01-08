@@ -83,9 +83,9 @@ const PORTFOLIO = {
             title: "Feature Store Migration",
             lane: "MLOps",
             description: "Migrated batch feature pipeline to streaming (Feast → custom Redis). Reduced feature freshness from 24h to < 5 min. Zero downtime cutover.",
-            badges: ["Architecture", "Zero Downtime"],
+            badges: ["Architecture", "Zero Downtime", "Coming Soon"],
             links: {
-                repo: "https://github.com/Croesus245/My-POrt/tree/main/feature-store-migration"
+                repo: "#"
             }
         },
         {
@@ -93,9 +93,9 @@ const PORTFOLIO = {
             title: "Prompt Classifier",
             lane: "LLM/GenAI",
             description: "Binary classifier to detect prompt injection attempts before they reach the LLM. 97% precision at 92% recall on held-out attack corpus.",
-            badges: ["Model Card", "Eval Suite"],
+            badges: ["Model Card", "Eval Suite", "Coming Soon"],
             links: {
-                repo: "https://github.com/Croesus245/My-POrt/tree/main/prompt-classifier"
+                repo: "#"
             }
         },
         {
@@ -103,10 +103,10 @@ const PORTFOLIO = {
             title: "Calibration Toolkit",
             lane: "Research",
             description: "Open-source library for post-hoc calibration (temperature scaling, isotonic regression) with reliability diagrams and ECE reporting.",
-            badges: ["PyPI", "Docs"],
+            badges: ["PyPI", "Docs", "Coming Soon"],
             links: {
-                repo: "https://github.com/Croesus245/My-POrt/tree/main/calibration-toolkit",
-                pypi: "https://pypi.org/project/calibration-toolkit/"
+                repo: "#",
+                pypi: "#"
             }
         }
     ],

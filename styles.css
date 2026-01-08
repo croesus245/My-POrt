@@ -326,6 +326,12 @@ button {
     font-size: 13px;
 }
 
+.btn-disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
 .btn-large {
     padding: 14px 28px;
     font-size: 16px;
@@ -431,6 +437,16 @@ button {
     content: '✓';
     color: var(--success);
     font-size: 10px;
+}
+
+.badge-muted {
+    opacity: 0.6;
+    background-color: var(--bg-tertiary);
+}
+
+.badge-muted::before {
+    content: '◷';
+    color: var(--text-secondary);
 }
 
 .card-buttons {
