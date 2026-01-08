@@ -191,5 +191,18 @@
     </footer>
 
     <script src="app.js"></script>
+    <script>
+        // Fallback hamburger handler
+        document.addEventListener('DOMContentLoaded', function() {
+            var hamburger = document.getElementById('hamburger');
+            var mobileNav = document.getElementById('mobile-nav');
+            if (hamburger && mobileNav) {
+                hamburger.onclick = function() {
+                    hamburger.classList.toggle('active');
+                    mobileNav.classList.toggle('active');
+                };
+            }
+        });
+    </script>
 </body>
 </html>
