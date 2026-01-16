@@ -74,7 +74,7 @@
                 </div>
 
                 <div class="validation-context">
-                    <strong>📊 Note:</strong> This is a personal project with synthetic data. The benchmarks are from my own load tests on a 4-core VM. Not production traffic. <a href="#benchmarks">See methodology →</a>
+                    <strong>Note:</strong> This is a personal project with synthetic data. The benchmarks are from my own load tests on a 4-core VM. Not production traffic. <a href="#benchmarks">See methodology →</a>
                 </div>
 
                 <div class="case-links">
@@ -93,7 +93,7 @@
                 <!-- Interactive Transaction Scorer -->
                 <div class="demo-container">
                     <div class="demo-header">
-                        <h3>🔍 Score a Transaction</h3>
+                        <h3>Score a Transaction</h3>
                         <div class="demo-status">
                             <span class="demo-status-dot"></span>
                             <span>Simulated API</span>
@@ -143,7 +143,7 @@
                             </div>
                         </div>
                         <button class="demo-btn" id="score-btn-interactive" onclick="scoreTransactionInteractive()">
-                            ⚡ Score Transaction
+                            Score Transaction
                         </button>
                         
                         <div id="fraud-result" class="demo-result" style="display: none;">
@@ -173,7 +173,7 @@
                 <!-- Drift Simulator -->
                 <div class="demo-container">
                     <div class="demo-header">
-                        <h3>⚠️ Drift Simulation</h3>
+                        <h3>Drift Simulation</h3>
                         <div class="demo-status">
                             <span class="demo-status-dot"></span>
                             <span>Monitoring</span>
@@ -182,7 +182,7 @@
                     <div class="demo-body">
                         <p style="color: var(--text-secondary); margin-bottom: 16px;">Simulate a distribution shift and see how the monitoring system responds.</p>
                         <button class="demo-btn demo-btn-secondary" onclick="triggerDriftInteractive()">
-                            🔄 Inject Drift Event
+                            Inject Drift Event
                         </button>
                         <div id="drift-result" class="demo-result" style="display: none;">
                             <div class="demo-result-header">
@@ -287,7 +287,7 @@ make drift-sim                 # Trigger drift simulation</code></pre>
                 <section class="case-section" id="benchmarks">
                     <h2>Benchmarks</h2>
                     <div class="benchmark-methodology">
-                        <strong>🔬 How I tested this:</strong> Locust load testing against the FastAPI service running on my 4-core VM. Synthetic transaction payloads. This tells you the code works and roughly how fast—not how it would perform in a real production environment with real data.
+                        <strong>How I tested this:</strong> Locust load testing against the FastAPI service running on my 4-core VM. Synthetic transaction payloads. This tells you the code works and roughly how fast—not how it would perform in a real production environment with real data.
                     </div>
                     <div class="constraints-grid">
                         <div class="constraint">
@@ -402,22 +402,22 @@ make drift-sim                 # Trigger drift simulation</code></pre>
                             <tr>
                                 <td>High-value transactions (> $500)</td>
                                 <td>0.85</td>
-                                <td>✓ Pass</td>
+                                <td>Pass</td>
                             </tr>
                             <tr>
                                 <td>New users (< 30 days)</td>
                                 <td>0.79</td>
-                                <td>✓ Pass</td>
+                                <td>Pass</td>
                             </tr>
                             <tr>
                                 <td>International transactions</td>
                                 <td>0.84</td>
-                                <td>✓ Pass</td>
+                                <td>Pass</td>
                             </tr>
                             <tr>
                                 <td>Card-not-present</td>
                                 <td>0.86</td>
-                                <td>✓ Pass</td>
+                                <td>Pass</td>
                             </tr>
                         </tbody>
                     </table>
@@ -426,7 +426,7 @@ make drift-sim                 # Trigger drift simulation</code></pre>
                     <div class="ci-evidence">
                         <strong>Example CI Gate Output</strong><br>
                         <span style="opacity: 0.7;">(Shown as example—run <code>make eval</code> locally to see real output)</span><br>
-                        Workflow: <code>eval-gate.yml</code> · Eval Gate: ✅ PASS · Worst slice: <code>New users PR-AUC = 0.79</code> · Regressions: <code>0</code>
+                        Workflow: <code>eval-gate.yml</code> · Eval Gate: PASS · Worst slice: <code>New users PR-AUC = 0.79</code> · Regressions: <code>0</code>
                     </div>
                 </section>
 
@@ -593,7 +593,7 @@ make drift-sim                 # Trigger drift simulation</code></pre>
                     <div class="proof-gallery">
                         <figure class="proof-figure">
                             <div class="proof-placeholder" data-type="chart">
-                                <span class="placeholder-icon">📊</span>
+                                <span class="placeholder-icon">[chart]</span>
                                 <span class="placeholder-label">Load Test Chart</span>
                                 <code>make benchmark</code>
                             </div>
@@ -602,7 +602,7 @@ make drift-sim                 # Trigger drift simulation</code></pre>
                         
                         <figure class="proof-figure">
                             <div class="proof-placeholder" data-type="alert">
-                                <span class="placeholder-icon">🚨</span>
+                                <span class="placeholder-icon">[alert]</span>
                                 <span class="placeholder-label">Drift Alert</span>
                                 <code>make drift-sim</code>
                             </div>
@@ -611,7 +611,7 @@ make drift-sim                 # Trigger drift simulation</code></pre>
                         
                         <figure class="proof-figure">
                             <div class="proof-placeholder" data-type="ci">
-                                <span class="placeholder-icon">✅</span>
+                                <span class="placeholder-icon">[pass]</span>
                                 <span class="placeholder-label">CI Eval Gate</span>
                                 <code>.github/workflows/</code>
                             </div>
@@ -900,7 +900,7 @@ ${JSON.stringify(request, null, 2)}
 // Response (${response.latency_ms}ms)
 ${JSON.stringify(response, null, 2)}`;
                 
-                showOutput('🔍 Fraud Score Result', output, txn.decision);
+                showOutput('Fraud Score Result', output, txn.decision);
                 btn.classList.remove('loading');
             }, 300 + Math.random() * 200);
         }
@@ -938,7 +938,7 @@ ${JSON.stringify(alert, null, 2)}
 
 // Slack notification sent to #ml-alerts`;
                 
-                showOutput('📉 Drift Alert', output, alert.severity);
+                showOutput('Drift Alert', output, alert.severity);
                 btn.classList.remove('loading');
             }, 500 + Math.random() * 300);
         }

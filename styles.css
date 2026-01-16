@@ -453,9 +453,13 @@ button {
 }
 
 .badge::before {
-    content: '✓';
-    color: var(--success);
-    font-size: 10px;
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: var(--success);
+    border-radius: 50%;
+    margin-right: 2px;
 }
 
 .badge-muted {

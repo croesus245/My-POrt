@@ -71,7 +71,7 @@
                 </div>
 
                 <div class="validation-context">
-                    <strong>📊 Note:</strong> This runs locally with synthetic documents. I wrote 120+ attack tests myself—they test my own code, not a production system. Some attacks still work.
+                    <strong>Note:</strong> This runs locally with synthetic documents. I wrote 120+ attack tests myself—they test my own code, not a production system. Some attacks still work.
                 </div>
 
                 <div class="case-links">
@@ -89,7 +89,7 @@
                 
                 <div class="demo-container">
                     <div class="demo-header">
-                        <h3>💬 SecureRAG Chat</h3>
+                        <h3>SecureRAG Chat</h3>
                         <div class="demo-status">
                             <span class="demo-status-dot"></span>
                             <span>Security: Active</span>
@@ -98,7 +98,7 @@
                     <div class="demo-body">
                         <div class="chat-container" id="chat-container">
                             <div class="chat-message assistant">
-                                <div class="chat-avatar">🤖</div>
+                                <div class="chat-avatar">[AI]</div>
                                 <div class="chat-bubble">
                                     Hello! I'm SecureRAG. I can answer questions about your documents with built-in security. Try asking a question, or test my defenses with an injection attempt.
                                 </div>
@@ -122,7 +122,7 @@
                         
                         <div id="security-log" class="demo-result" style="display: none; margin-top: 20px;">
                             <div class="demo-result-header">
-                                <span class="demo-result-title">🛡️ Security Log</span>
+                                <span class="demo-result-title">Security Log</span>
                                 <span id="security-badge" class="demo-result-badge allow">SAFE</span>
                             </div>
                             <pre id="security-json" class="demo-json"></pre>
@@ -276,25 +276,25 @@ pytest tests/attacks/ -v             # Run 120+ attack tests</code></pre>
                                 <td>Data exfiltration</td>
                                 <td>20</td>
                                 <td>0% (0/20)</td>
-                                <td>✓ Pass</td>
+                                <td>Pass</td>
                             </tr>
                             <tr>
                                 <td>Tool abuse / escalation</td>
                                 <td>15</td>
                                 <td>0% (0/15)</td>
-                                <td>✓ Pass</td>
+                                <td>Pass</td>
                             </tr>
                             <tr>
                                 <td>PII extraction</td>
                                 <td>15</td>
                                 <td>0% (0/15)</td>
-                                <td>✓ Pass</td>
+                                <td>Pass</td>
                             </tr>
                             <tr class="highlight">
                                 <td><strong>Total</strong></td>
                                 <td><strong>120</strong></td>
                                 <td><strong>1.7%</strong></td>
-                                <td><strong>✓ Pass</strong></td>
+                                <td><strong>Pass</strong></td>
                             </tr>
                         </tbody>
                     </table>
@@ -376,7 +376,7 @@ pytest tests/attacks/ -v             # Run 120+ attack tests</code></pre>
                     <div class="proof-gallery">
                         <figure class="proof-figure">
                             <div class="proof-placeholder" data-type="video">
-                                <span class="placeholder-icon">🎬</span>
+                                <span class="placeholder-icon">[demo]</span>
                                 <span class="placeholder-label">Attack Tests Running</span>
                                 <code>pytest tests/attacks/</code>
                             </div>
@@ -385,7 +385,7 @@ pytest tests/attacks/ -v             # Run 120+ attack tests</code></pre>
                         
                         <figure class="proof-figure">
                             <div class="proof-placeholder" data-type="table">
-                                <span class="placeholder-icon">📊</span>
+                                <span class="placeholder-icon">[chart]</span>
                                 <span class="placeholder-label">Attack Report Summary</span>
                                 <code>docs/attack_report.md</code>
                             </div>
@@ -394,7 +394,7 @@ pytest tests/attacks/ -v             # Run 120+ attack tests</code></pre>
                         
                         <figure class="proof-figure">
                             <div class="proof-placeholder" data-type="dashboard">
-                                <span class="placeholder-icon">📈</span>
+                                <span class="placeholder-icon">[graph]</span>
                                 <span class="placeholder-label">Eval Dashboard</span>
                                 <code>docs/eval_dashboard.md</code>
                             </div>
@@ -524,14 +524,14 @@ pytest tests/attacks/ -v             # Run 120+ attack tests</code></pre>
             let securityBadge = '';
             if (securityInfo) {
                 const badgeClass = securityInfo.blocked ? 'blocked' : (securityInfo.threats.length > 0 ? 'warning' : '');
-                const badgeText = securityInfo.blocked ? '🛡️ BLOCKED' : (securityInfo.threats.length > 0 ? '⚠️ FLAGGED' : '');
+                const badgeText = securityInfo.blocked ? 'BLOCKED' : (securityInfo.threats.length > 0 ? 'FLAGGED' : '');
                 if (badgeText) {
                     securityBadge = `<span class="security-badge ${badgeClass}">${badgeText}</span>`;
                 }
             }
             
             msgDiv.innerHTML = `
-                <div class="chat-avatar">${isUser ? '👤' : '🤖'}</div>
+                <div class="chat-avatar">${isUser ? '[You]' : '[AI]'}</div>
                 <div class="chat-bubble">${content}${securityBadge}</div>
             `;
             container.appendChild(msgDiv);
@@ -575,9 +575,9 @@ pytest tests/attacks/ -v             # Run 120+ attack tests</code></pre>
                 
                 if (blocked) {
                     const threatTypes = threats.map(t => t.type).join(', ');
-                    response = `⛔ I cannot process this request. Security analysis detected: <strong>${threatTypes}</strong>. This attempt has been logged for review.`;
+                    response = `I cannot process this request. Security analysis detected: <strong>${threatTypes}</strong>. This attempt has been logged for review.`;
                 } else if (threats.length > 0) {
-                    response = `⚠️ Your query was flagged by our security filters. I'll respond in safe mode with limited retrieval scope.<br><br>Based on authorized documents only: I can help answer questions about company policies and procedures. Please rephrase your question.`;
+                    response = `Your query was flagged by our security filters. I'll respond in safe mode with limited retrieval scope.<br><br>Based on authorized documents only: I can help answer questions about company policies and procedures. Please rephrase your question.`;
                 } else {
                     // Normal responses for safe queries
                     const normalResponses = [

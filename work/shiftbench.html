@@ -84,7 +84,7 @@
                 
                 <div class="demo-container">
                     <div class="demo-header">
-                        <h3>📊 Performance Under Shift</h3>
+                        <h3>Performance Under Shift</h3>
                         <div class="demo-status">
                             <span class="demo-status-dot"></span>
                             <span>Benchmark Data</span>
@@ -332,15 +332,15 @@ python scripts/evaluate.py --split temporal  # Evaluate under shift</code></pre>
                     <h2>Negative Results</h2>
                     <div class="negative-results">
                         <div class="negative-item">
-                            <h4>❌ Mixup Augmentation</h4>
+                            <h4>Mixup Augmentation</h4>
                             <p>No accuracy improvement. Hurt calibration (ECE increased by 0.03). Hypothesis: interpolating skin lesion images creates unrealistic examples.</p>
                         </div>
                         <div class="negative-item">
-                            <h4>❌ Heavy Augmentation</h4>
+                            <h4>Heavy Augmentation</h4>
                             <p>+2% accuracy, but ECE increased from 0.07 to 0.11. Model became overconfident on augmented distribution.</p>
                         </div>
                         <div class="negative-item">
-                            <h4>❌ Focal Loss</h4>
+                            <h4>Focal Loss</h4>
                             <p>Marginal improvement on rare classes (+1%), but degraded common class performance (-2%). Net negative.</p>
                         </div>
                     </div>
