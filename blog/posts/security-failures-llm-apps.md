@@ -6,9 +6,11 @@
 
 ---
 
-LLMs are incredible. They're also a security nightmare if you're not careful.
+Building SecureRAG taught me a lot about LLM security by making me think like an attacker.
 
-I've reviewed dozens of LLM applications over the past year. The same vulnerabilities appear again and again. Here are the three patterns that cause the most damage.
+These are the three vulnerability patterns I focused on—and how I tried to defend against them.
+
+(Disclaimer: I'm learning this stuff. These patterns come from security research papers and my own experiments, not from auditing production systems.)
 
 ## Pattern 1: Trusting the LLM's Output
 
@@ -58,7 +60,7 @@ def process_user_query(query: str) -> dict:
 
 ## Pattern 2: Retrieval Without Access Control
 
-RAG (Retrieval-Augmented Generation) is powerful. It's also a data exfiltration vector if you're not careful.
+RAG is great for document Q&A. It's also a data exfiltration vector if you're not careful.
 
 ### The vulnerability
 
@@ -218,4 +220,4 @@ The teams that ship secure LLM applications are the ones that treat security as 
 
 ---
 
-*For a deeper dive into LLM security architecture, see my [SecureRAG case study](/work/securerag.html).*
+*More on LLM security in my [SecureRAG case study](/work/securerag.html).*

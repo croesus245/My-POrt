@@ -6,13 +6,15 @@
 
 ---
 
-Your model has 0.95 AUC on the test set. Ship it, right?
+Your model has 0.95 AUC on the test set. Ship it?
 
-Not so fast. That test set was sampled from the same distribution as training. Your users live in a different world.
+I did. On a personal project. Watched it fall apart when I tested on data from a month later.
+
+This is what I learned.
 
 ## The Gap
 
-I've seen this pattern repeatedly:
+On my fraud detection project, here's what I saw:
 
 | Metric | Offline | Production (Week 1) |
 |--------|---------|---------------------|
@@ -60,7 +62,7 @@ for slice_name in slices:
     print(f"{slice_name}: AUC = {calculate_auc(model, slice_data):.3f}")
 ```
 
-I've seen models with 0.92 overall AUC that dropped to 0.61 on the "new users" slice. That's a production incident waiting to happen.
+I've seen models with 0.92 overall AUC that dropped to 0.61 on specific slices. Once you start looking, you find these gaps everywhere.
 
 ### 2. Test calibration, not just discrimination
 
@@ -123,30 +125,28 @@ def predict(request):
 
 After a week, you'll know if the candidate model agrees with reality.
 
-## The Uncomfortable Truth
+## What I Learned
 
 Offline metrics are necessary but not sufficient. They're a gate, not a guarantee.
 
-The model that wins on your test set might lose in production. The model with the best AUC might have the worst calibration. The model that's fast on your laptop might be slow under load.
-
-Build evaluation systems, not evaluation scripts.
+I haven't deployed models at massive scale (yet). But even on personal projects with synthetic data, these patterns show up. The principles should transfer.
 
 ---
 
 ## What I'd Do Differently
 
-If I were starting over:
+Looking back at my projects:
 
-1. **Invest in slice infrastructure early.** You can't fix problems you can't see.
+1. **Start with temporal splits.** Random splits hide so much.
 
-2. **Make temporal splits the default.** Random splits should require justification.
+2. **Build slice infrastructure early.** You can't fix what you can't see.
 
-3. **Log everything.** You'll need it for debugging and retraining.
+3. **Log predictions.** You'll need them for debugging.
 
-4. **Build dashboards before models.** If you can't measure production, you can't improve it.
+4. **Make dashboards before models.** Measurement first.
 
-The teams that win are the ones that close the feedback loop between production and development. Offline metrics are the beginning of that loop, not the end.
+I'm still learning this stuff. These are notes to my future self as much as advice to anyone else.
 
 ---
 
-*Enjoyed this? Check out [Eval Suites as CI Gates](eval-suites-ci-gates.md) for the implementation details.*
+*More on this: [Eval Suites as CI Gates](eval-suites-ci-gates.md)*

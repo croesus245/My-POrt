@@ -6,6 +6,16 @@
     <title>Proof — Abdul-Sobur Ayinde</title>
     <meta name="description" content="Production artifacts: eval harnesses, drift runbooks, attack test suites, cost reports, and model cards.">
     
+    <!-- Open Graph -->
+    <meta property="og:title" content="Proof — Abdul-Sobur Ayinde">
+    <meta property="og:description" content="Documentation I wrote: eval reports, drift runbooks, security tests, model cards.">
+    <meta property="og:image" content="https://croesusml.vercel.app/assets/profile.jpg">
+    <meta property="og:url" content="https://croesusml.vercel.app/proof.html">
+    <meta property="og:type" content="website">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -13,6 +23,8 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
+    
     <header class="header">
         <div class="header-container">
             <div class="header-left">
@@ -44,11 +56,11 @@
         </nav>
     </header>
 
-    <main class="page-content">
+    <main id="main-content" class="page-content">
         <div class="container">
             <div class="page-header">
                 <h1 class="page-title">Proof</h1>
-                <p class="page-subtitle">Docs I actually use. Links go to the repo.</p>
+                <p class="page-subtitle">Documentation I wrote for my learning projects. Shows how I think about ML systems.</p>
             </div>
 
             <div class="proof-grid-large">
@@ -57,7 +69,7 @@
                     <div class="proof-icon">[eval]</div>
                     <div class="proof-content">
                         <h2 class="proof-title">Evaluation Report</h2>
-                        <p class="proof-description">Slice metrics, regression tests, CI gates. Every model tested against defined subgroups before deployment.</p>
+                        <p class="proof-description">The eval framework I built for FraudShield. Slice metrics, regression tests, CI integration.</p>
                         <ul class="proof-details">
                             <li>Per-slice PR-AUC, F1, calibration</li>
                             <li>Regression tests with 5% tolerance</li>
@@ -73,7 +85,7 @@
                     <div class="proof-icon">[drift]</div>
                     <div class="proof-content">
                         <h2 class="proof-title">Drift Runbook</h2>
-                        <p class="proof-description">What to monitor, when to alert, how to respond. Decision tree for retrain vs. rollback.</p>
+                        <p class="proof-description">How I'd handle drift if this were production. Decision tree for retrain vs. rollback.</p>
                         <ul class="proof-details">
                             <li>PSI thresholds per feature</li>
                             <li>KS test alert conditions</li>
@@ -89,7 +101,7 @@
                     <div class="proof-icon">[sec]</div>
                     <div class="proof-content">
                         <h2 class="proof-title">Security Test Report</h2>
-                        <p class="proof-description">120+ adversarial test cases for LLM security: injection, exfil, jailbreak, tool abuse.</p>
+                        <p class="proof-description">120+ test cases I wrote to attack my own RAG system. Injection, exfil, jailbreak, tool abuse.</p>
                         <ul class="proof-details">
                             <li>50 direct prompt injection</li>
                             <li>20 indirect injection (via docs)</li>
@@ -106,7 +118,7 @@
                     <div class="proof-icon">[rag]</div>
                     <div class="proof-content">
                         <h2 class="proof-title">RAG Eval Dashboard</h2>
-                        <p class="proof-description">Retrieval precision/recall, faithfulness scores, grounding verification for every response.</p>
+                        <p class="proof-description">Metrics I track for SecureRAG: retrieval quality, faithfulness, grounding verification.</p>
                         <ul class="proof-details">
                             <li>P@5 / R@5 retrieval metrics</li>
                             <li>LLM-as-judge faithfulness</li>
@@ -122,7 +134,7 @@
                     <div class="proof-icon">[cost]</div>
                     <div class="proof-content">
                         <h2 class="proof-title">Cost & Latency Report</h2>
-                        <p class="proof-description">p50/p95 latency, throughput benchmarks, $/1k requests, and optimization analysis.</p>
+                        <p class="proof-description">Benchmarks from local testing. Latency percentiles, cost estimates, what I'd optimize.</p>
                         <ul class="proof-details">
                             <li>Latency percentiles (p50/p95/p99)</li>
                             <li>Throughput under load</li>
@@ -138,7 +150,7 @@
                     <div class="proof-icon">[card]</div>
                     <div class="proof-content">
                         <h2 class="proof-title">Model Card</h2>
-                        <p class="proof-description">Performance by slice, known limitations, failure modes, and intended use documentation.</p>
+                        <p class="proof-description">Documentation for the FraudShield model. Limitations, failure modes, performance by slice.</p>
                         <ul class="proof-details">
                             <li>Model details & training data</li>
                             <li>Performance across subgroups</li>
@@ -170,7 +182,7 @@
                     <div class="proof-icon">[post]</div>
                     <div class="proof-content">
                         <h2 class="proof-title">Incident Postmortem</h2>
-                        <p class="proof-description">Intentional failure simulation with root cause analysis, response timeline, and prevention measures.</p>
+                        <p class="proof-description">A simulated failure I designed to practice incident response. Root cause analysis format.</p>
                         <ul class="proof-details">
                             <li>Incident timeline</li>
                             <li>Root cause analysis</li>
@@ -186,7 +198,15 @@
 
     <footer class="footer">
         <div class="container">
-            <p>© 2025 Abdul-Sobur Ayinde · <a href="contact.html">Get in touch</a></p>
+            <div class="footer-content">
+                <p>© 2026 Abdul-Sobur Ayinde</p>
+                <div class="footer-links">
+                    <a href="https://github.com/croesus245" target="_blank">GitHub</a>
+                    <a href="https://linkedin.com/in/abdulsobur-ayinde" target="_blank">LinkedIn</a>
+                    <a href="https://youtube.com/@croesus_py" target="_blank">YouTube</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+            </div>
         </div>
     </footer>
 

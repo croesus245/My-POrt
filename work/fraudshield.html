@@ -6,6 +6,9 @@
     <title>FraudShield — Case Study</title>
     <meta name="description" content="Real-time fraud detection with delayed label reconciliation, drift monitoring, and incident simulation.">
     
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../assets/favicon.png">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -13,6 +16,8 @@
     <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
+    
     <header class="header">
         <div class="header-container">
             <div class="header-left">
@@ -44,7 +49,7 @@
         </nav>
     </header>
 
-    <main class="case-study">
+    <main id="main-content" class="case-study">
         <div class="container">
             <!-- Breadcrumb -->
             <nav class="breadcrumb">
@@ -57,7 +62,7 @@
             <header class="case-hero">
                 <span class="case-lane">MLOps</span>
                 <h1 class="case-title">FraudShield</h1>
-                <p class="case-tagline">Real-time fraud scoring with delayed labels (30–90 days). Built for drift, extreme imbalance, and incident response.</p>
+                <p class="case-tagline">A learning project for understanding fraud detection systems—delayed labels, drift, and what happens when things break.</p>
                 
                 <div class="case-badges">
                     <span class="badge">CI-Eval</span>
@@ -69,7 +74,7 @@
                 </div>
 
                 <div class="validation-context">
-                    <strong>📊 Validation Environment:</strong> Benchmarks from synthetic load tests (Locust) on a 4-core VM. Designed to scale horizontally. <a href="#benchmarks">See methodology →</a>
+                    <strong>📊 Note:</strong> This is a personal project with synthetic data. The benchmarks are from my own load tests on a 4-core VM. Not production traffic. <a href="#benchmarks">See methodology →</a>
                 </div>
 
                 <div class="case-links">
@@ -83,37 +88,110 @@
             <!-- Try It -->
             <section class="case-section try-it-box" id="demo">
                 <h2>Interactive Demo</h2>
-                <p class="demo-disclaimer"><strong>Simulated output</strong> — Click to see example API responses. Clone the repo to run for real.</p>
-                <div class="try-it-buttons">
-                    <button class="try-it-btn" id="score-btn" onclick="scoreTransaction()">
-                        <span class="try-it-icon">[?]</span>
-                        <span class="try-it-label">Score a Transaction</span>
-                        <span class="try-it-desc">Example: score + decision + reason codes</span>
-                    </button>
-                    <button class="try-it-btn" id="drift-btn" onclick="triggerDrift()">
-                        <span class="try-it-icon">[!]</span>
-                        <span class="try-it-label">Trigger Drift</span>
-                        <span class="try-it-desc">Example: PSI spike and alert format</span>
-                    </button>
-                </div>
-
-                <!-- Demo Output -->
-                <div id="demo-output" class="demo-output" style="display:none;">
-                    <div class="demo-output-header">
-                        <span id="demo-output-title">Response</span>
-                        <button class="demo-close" onclick="closeDemoOutput()">×</button>
+                <p class="demo-disclaimer"><strong>This is fake</strong> — it's a simulation showing what the API responses look like. Clone the repo if you want to run the real thing locally.</p>
+                
+                <!-- Interactive Transaction Scorer -->
+                <div class="demo-container">
+                    <div class="demo-header">
+                        <h3>🔍 Score a Transaction</h3>
+                        <div class="demo-status">
+                            <span class="demo-status-dot"></span>
+                            <span>Simulated API</span>
+                        </div>
                     </div>
-                    <pre id="demo-output-content"></pre>
+                    <div class="demo-body">
+                        <div class="demo-input-row">
+                            <div class="demo-input-group">
+                                <label>Amount ($)</label>
+                                <input type="number" class="demo-input" id="txn-amount" value="847.50" min="0" step="0.01">
+                            </div>
+                            <div class="demo-input-group">
+                                <label>Channel</label>
+                                <select class="demo-input" id="txn-channel">
+                                    <option value="card_not_present">Card Not Present</option>
+                                    <option value="card_present">Card Present</option>
+                                    <option value="mobile">Mobile App</option>
+                                    <option value="atm">ATM</option>
+                                </select>
+                            </div>
+                            <div class="demo-input-group">
+                                <label>Merchant Category</label>
+                                <select class="demo-input" id="txn-merchant">
+                                    <option value="travel">Travel & Airlines</option>
+                                    <option value="electronics">Electronics</option>
+                                    <option value="grocery">Grocery</option>
+                                    <option value="gas">Gas Station</option>
+                                    <option value="crypto">Crypto Exchange</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="demo-input-row">
+                            <div class="demo-input-group">
+                                <label>User Velocity (txns/hr)</label>
+                                <input type="number" class="demo-input" id="txn-velocity" value="3" min="0">
+                            </div>
+                            <div class="demo-input-group">
+                                <label>Account Age (days)</label>
+                                <input type="number" class="demo-input" id="txn-age" value="45" min="0">
+                            </div>
+                            <div class="demo-input-group">
+                                <label>New Device?</label>
+                                <select class="demo-input" id="txn-device">
+                                    <option value="no">No (Known Device)</option>
+                                    <option value="yes">Yes (First Time)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button class="demo-btn" id="score-btn-interactive" onclick="scoreTransactionInteractive()">
+                            ⚡ Score Transaction
+                        </button>
+                        
+                        <div id="fraud-result" class="demo-result" style="display: none;">
+                            <div class="demo-result-header">
+                                <span class="demo-result-title">API Response</span>
+                                <span id="fraud-decision-badge" class="demo-result-badge"></span>
+                            </div>
+                            <pre id="fraud-json" class="demo-json"></pre>
+                            <div class="demo-metrics">
+                                <div class="demo-metric">
+                                    <span id="fraud-score" class="demo-metric-value">—</span>
+                                    <span class="demo-metric-label">Risk Score</span>
+                                </div>
+                                <div class="demo-metric">
+                                    <span id="fraud-latency" class="demo-metric-value">—</span>
+                                    <span class="demo-metric-label">Latency</span>
+                                </div>
+                                <div class="demo-metric">
+                                    <span id="fraud-reasons" class="demo-metric-value">—</span>
+                                    <span class="demo-metric-label">Risk Factors</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <h4>Sample Request → Response</h4>
-                <div class="code-block">
-                    <pre><code># Request
-curl -X POST localhost:8000/predict \
-  -d '{"amount":847.50,"user_id":"u_12345","merchant_id":"m_travel_05","device_id":"d_77","channel":"card_not_present"}'
-
-# Response
-{"score":0.73,"decision":"review","reason_codes":["velocity_user_1h_high","new_merchant_high_amount"],"model_version":"xgb_v0.3.1"}</code></pre>
+                <!-- Drift Simulator -->
+                <div class="demo-container">
+                    <div class="demo-header">
+                        <h3>⚠️ Drift Simulation</h3>
+                        <div class="demo-status">
+                            <span class="demo-status-dot"></span>
+                            <span>Monitoring</span>
+                        </div>
+                    </div>
+                    <div class="demo-body">
+                        <p style="color: var(--text-secondary); margin-bottom: 16px;">Simulate a distribution shift and see how the monitoring system responds.</p>
+                        <button class="demo-btn demo-btn-secondary" onclick="triggerDriftInteractive()">
+                            🔄 Inject Drift Event
+                        </button>
+                        <div id="drift-result" class="demo-result" style="display: none;">
+                            <div class="demo-result-header">
+                                <span class="demo-result-title">Drift Alert</span>
+                                <span id="drift-severity-badge" class="demo-result-badge review">ALERT</span>
+                            </div>
+                            <pre id="drift-json" class="demo-json"></pre>
+                        </div>
+                    </div>
                 </div>
 
                 <h4>Quick Start</h4>
@@ -130,16 +208,17 @@ make drift-sim                 # Trigger drift simulation</code></pre>
             <div class="case-content">
                 <!-- Problem -->
                 <section class="case-section">
-                    <h2>Problem</h2>
+                    <h2>Why I Built This</h2>
+                    <p>Most fraud detection tutorials show you a classifier and call it done. But real fraud systems have problems that tutorials skip:</p>
                     <ul class="problem-facts">
-                        <li><strong>Adversarial & non-stationary:</strong> Attackers change patterns to bypass detection</li>
-                        <li><strong>Delayed labels:</strong> Chargebacks/confirmed fraud arrive 30–90 days after the event</li>
-                        <li><strong>Extreme imbalance:</strong> Fraud is rare (often 0.1%–1% in production systems)—accuracy is meaningless</li>
-                        <li><strong>Must self-monitor:</strong> System must detect drift and degrade safely when signals shift</li>
+                        <li><strong>Labels arrive late:</strong> Chargebacks take 30-90 days. You can't just do train/test split.</li>
+                        <li><strong>Fraudsters adapt:</strong> Patterns change constantly. Your model from last month might be useless.</li>
+                        <li><strong>Class imbalance is extreme:</strong> 0.1-1% fraud rate. Accuracy is a useless metric.</li>
+                        <li><strong>You need to know when it's failing:</strong> Drift detection isn't optional.</li>
                     </ul>
                     
                     <div class="why-different-box">
-                        <p><strong>Beyond a classifier:</strong> delayed-label reconciliation, drift monitoring, CI regression gates, and incident runbooks.</p>
+                        <p><strong>What I learned:</strong> The model is the easy part. Label reconciliation, drift monitoring, and knowing when to retrain—that's the real work.</p>
                     </div>
                 </section>
 
@@ -206,9 +285,9 @@ make drift-sim                 # Trigger drift simulation</code></pre>
 
                 <!-- Constraints -->
                 <section class="case-section" id="benchmarks">
-                    <h2>Benchmarks & Constraints</h2>
+                    <h2>Benchmarks</h2>
                     <div class="benchmark-methodology">
-                        <strong>🔬 Methodology:</strong> Locust load testing against FastAPI service. 4-core VM, uvicorn workers=4, synthetic transaction payloads. These numbers show the architecture handles load—production performance depends on infrastructure and traffic patterns.
+                        <strong>🔬 How I tested this:</strong> Locust load testing against the FastAPI service running on my 4-core VM. Synthetic transaction payloads. This tells you the code works and roughly how fast—not how it would perform in a real production environment with real data.
                     </div>
                     <div class="constraints-grid">
                         <div class="constraint">
@@ -650,13 +729,138 @@ make drift-sim                 # Trigger drift simulation</code></pre>
 
     <footer class="footer">
         <div class="container">
-            <p>© 2025 Abdul-Sobur Ayinde · <a href="../contact.html">Get in touch</a></p>
+            <div class="footer-content">
+                <p>© 2026 Abdul-Sobur Ayinde</p>
+                <div class="footer-links">
+                    <a href="https://github.com/croesus245" target="_blank">GitHub</a>
+                    <a href="https://linkedin.com/in/abdulsobur-ayinde" target="_blank">LinkedIn</a>
+                    <a href="https://youtube.com/@croesus_py" target="_blank">YouTube</a>
+                    <a href="../contact.html">Contact</a>
+                </div>
+            </div>
         </div>
     </footer>
 
     <script src="../app.js"></script>
     <script>
-        // Demo transaction scenarios
+        // Interactive Transaction Scorer
+        function scoreTransactionInteractive() {
+            const btn = document.getElementById('score-btn-interactive');
+            btn.classList.add('loading');
+            btn.disabled = true;
+            
+            // Simulate API latency
+            setTimeout(() => {
+            const amount = parseFloat(document.getElementById('txn-amount').value) || 0;
+            const channel = document.getElementById('txn-channel').value;
+            const merchant = document.getElementById('txn-merchant').value;
+            const velocity = parseInt(document.getElementById('txn-velocity').value) || 0;
+            const accountAge = parseInt(document.getElementById('txn-age').value) || 0;
+            const newDevice = document.getElementById('txn-device').value === 'yes';
+            
+            // Calculate risk score based on inputs
+            let score = 0.1;
+            let reasons = [];
+            
+            // Amount risk
+            if (amount > 1000) { score += 0.25; reasons.push("high_value_transaction"); }
+            else if (amount > 500) { score += 0.15; reasons.push("elevated_amount"); }
+            
+            // Channel risk
+            if (channel === 'card_not_present') { score += 0.1; reasons.push("cnp_risk"); }
+            
+            // Merchant category risk
+            if (merchant === 'crypto') { score += 0.25; reasons.push("high_risk_merchant_category"); }
+            else if (merchant === 'travel' || merchant === 'electronics') { score += 0.1; reasons.push("elevated_merchant_category"); }
+            
+            // Velocity risk
+            if (velocity > 5) { score += 0.2; reasons.push("velocity_spike_detected"); }
+            else if (velocity > 3) { score += 0.1; reasons.push("elevated_velocity"); }
+            
+            // Account age risk
+            if (accountAge < 7) { score += 0.2; reasons.push("new_account"); }
+            else if (accountAge < 30) { score += 0.1; reasons.push("young_account"); }
+            
+            // New device risk
+            if (newDevice) { score += 0.15; reasons.push("new_device_fingerprint"); }
+            
+            // Cap score at 0.99
+            score = Math.min(0.99, score);
+            score = Math.round(score * 100) / 100;
+            
+            // Determine decision
+            let decision = 'allow';
+            if (score >= 0.7) decision = 'block';
+            else if (score >= 0.4) decision = 'review';
+            
+            // Simulate latency
+            const latency = Math.floor(Math.random() * 25) + 18;
+            
+            const response = {
+                transaction_id: "txn_" + Math.random().toString(36).substr(2, 9),
+                score: score,
+                decision: decision,
+                reason_codes: reasons,
+                model_version: "xgb_v0.3.1",
+                latency_ms: latency,
+                timestamp: new Date().toISOString()
+            };
+            
+            // Display results
+            document.getElementById('fraud-result').style.display = 'block';
+            document.getElementById('fraud-json').textContent = JSON.stringify(response, null, 2);
+            document.getElementById('fraud-score').textContent = (score * 100).toFixed(0) + '%';
+            document.getElementById('fraud-latency').textContent = latency + 'ms';
+            document.getElementById('fraud-reasons').textContent = reasons.length;
+            
+            const badge = document.getElementById('fraud-decision-badge');
+            badge.textContent = decision.toUpperCase();
+            badge.className = 'demo-result-badge ' + decision;
+            
+            btn.classList.remove('loading');
+            btn.disabled = false;
+            }, 400 + Math.random() * 300);
+        }
+        
+        // Drift Simulator
+        function triggerDriftInteractive() {
+            const psi = (0.15 + Math.random() * 0.15).toFixed(3);
+            const ks = (0.08 + Math.random() * 0.1).toFixed(3);
+            const severity = parseFloat(psi) > 0.2 ? 'critical' : 'warning';
+            
+            const alert = {
+                alert_type: "DISTRIBUTION_DRIFT_DETECTED",
+                severity: severity,
+                timestamp: new Date().toISOString(),
+                metrics: {
+                    psi_score: parseFloat(psi),
+                    ks_statistic: parseFloat(ks),
+                    threshold_psi: 0.10,
+                    threshold_ks: 0.05,
+                    drifted_features: [
+                        { feature: "merchant_category", psi: parseFloat(psi) },
+                        { feature: "velocity_user_1h", psi: (parseFloat(psi) * 0.7).toFixed(3) }
+                    ],
+                    baseline_period: "2025-12-01 to 2025-12-20",
+                    current_period: "2025-12-21 to now",
+                    samples_baseline: 50000,
+                    samples_current: 12500
+                },
+                recommended_action: severity === 'critical' ? "TRIGGER_RETRAINING" : "INVESTIGATE_AND_MONITOR",
+                runbook: "docs/DRIFT_RUNBOOK.md",
+                slack_channel: "#ml-alerts",
+                on_call_notified: true
+            };
+            
+            document.getElementById('drift-result').style.display = 'block';
+            document.getElementById('drift-json').textContent = JSON.stringify(alert, null, 2);
+            
+            const badge = document.getElementById('drift-severity-badge');
+            badge.textContent = severity.toUpperCase();
+            badge.className = 'demo-result-badge ' + (severity === 'critical' ? 'block' : 'review');
+        }
+
+        // Demo transaction scenarios (legacy)
         const transactions = [
             { amount: 847.50, user_id: "u_12345", merchant_id: "m_travel_05", channel: "card_not_present", score: 0.73, decision: "review", reasons: ["velocity_user_1h_high", "new_merchant_high_amount"] },
             { amount: 2499.99, user_id: "u_78234", merchant_id: "m_electronics_12", channel: "mobile", score: 0.91, decision: "block", reasons: ["amount_zscore_extreme", "device_first_seen", "geo_anomaly"] },

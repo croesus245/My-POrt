@@ -6,6 +6,16 @@
     <title>Work — Abdul-Sobur Ayinde</title>
     <meta name="description" content="Production ML systems, secure LLM applications, and research benchmarks.">
     
+    <!-- Open Graph -->
+    <meta property="og:title" content="Work — Abdul-Sobur Ayinde">
+    <meta property="og:description" content="ML projects: fraud detection, secure RAG, distribution shift benchmarks.">
+    <meta property="og:image" content="https://croesusml.vercel.app/assets/profile.jpg">
+    <meta property="og:url" content="https://croesusml.vercel.app/work.html">
+    <meta property="og:type" content="website">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -13,6 +23,8 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
+    
     <header class="header">
         <div class="header-container">
             <div class="header-left">
@@ -44,12 +56,12 @@
         </nav>
     </header>
 
-    <main class="page-content">
+    <main id="main-content" class="page-content">
         <div class="container">
             <div class="page-header">
                 <h1 class="page-title">Work</h1>
-                <p class="page-subtitle">Production-grade ML systems. Research benchmarks. Every project ships with proof.</p>
-                <p class="page-truth-anchor">Benchmarks from synthetic load tests. Methodology and artifacts linked per project.</p>
+                <p class="page-subtitle">Projects I built to learn ML engineering. Each one taught me something new.</p>
+                <p class="page-truth-anchor">All benchmarks are from my own tests on synthetic data. I link the methodology so you can check.</p>
             </div>
 
             <div class="filter-chips">
@@ -60,11 +72,10 @@
             </div>
 
             <div class="badge-legend">
-                <span><strong>CI-Eval:</strong> PR blocked on metric regression</span>
-                <span><strong>Drift:</strong> PSI/KS/base-rate + runbook</span>
-                <span><strong>Attack Tests:</strong> injection/exfil/tool abuse suite</span>
-                <span><strong>Faithfulness:</strong> grounding/citation checks</span>
-                <span><strong>Reproducible:</strong> one-command rebuild</span>
+                <span><strong>CI-Eval:</strong> tests run on every PR</span>
+                <span><strong>Drift:</strong> monitors for data distribution changes</span>
+                <span><strong>Attack Tests:</strong> security test suite</span>
+                <span><strong>Reproducible:</strong> should work if you clone it</span>
             </div>
 
             <h2 class="section-label">Flagship Projects</h2>
@@ -74,8 +85,8 @@
                 <article class="project-card" data-lane="MLOps">
                     <span class="card-lane">MLOps</span>
                     <h3 class="card-title">FraudShield</h3>
-                    <p class="card-tagline">Real-time fraud scoring with delayed-label reconciliation (30–90d)</p>
-                    <p class="card-description">Benchmarked at ~1.2K TPS, p95 ≈ 45ms (Locust load test, single instance). Designed to scale horizontally. Drift monitoring, CI regression gates, and incident runbooks.</p>
+                    <p class="card-tagline">Learning project: fraud detection with delayed labels</p>
+                    <p class="card-description">Built this to understand how fraud systems handle labels that arrive 30-90 days late. Got ~1.2K TPS on my VM with Locust. Includes drift monitoring and a fake incident postmortem to practice the format.</p>
                     <div class="card-badges">
                         <span class="badge">CI-Eval</span>
                         <span class="badge">Drift</span>
@@ -95,8 +106,8 @@
                 <article class="project-card" data-lane="LLM/GenAI">
                     <span class="card-lane">LLM/GenAI</span>
                     <h3 class="card-title">SecureRAG</h3>
-                    <p class="card-tagline">Multi-tenant RAG with tenant isolation + sandboxed tools</p>
-                    <p class="card-description">Document Q&A with defense-in-depth. 120+ automated attacks (injection/exfil/tool abuse) with 0% exfil in test suite. Faithfulness + retrieval metrics per response, CI-gated.</p>
+                    <p class="card-tagline">Learning project: RAG with security focus</p>
+                    <p class="card-description">Most RAG tutorials skip security entirely. I wrote 120+ attack tests for this one—injection, exfil, tool abuse. Some attacks still work (2% success rate). I document what fails and why.</p>
                     <div class="card-badges">
                         <span class="badge">Attack Tests</span>
                         <span class="badge">Faithfulness</span>
@@ -115,8 +126,8 @@
                 <article class="project-card" data-lane="Research">
                     <span class="card-lane">Research</span>
                     <h3 class="card-title">ShiftBench</h3>
-                    <p class="card-tagline">Skin lesion benchmark under temporal + demographic shift (public datasets)</p>
-                    <p class="card-description">Train 2015–2018 → test 2019–2022. Calibration-aware and slice-evaluated. Reproducible baselines + results table + negative-results section.</p>
+                    <p class="card-tagline">Learning project: benchmarking under distribution shift</p>
+                    <p class="card-description">Most ML benchmarks use random splits that hide how models degrade over time. I used ISIC skin lesion data with a temporal split (train on 2015-18, test on 2019-22). Results are worse—that's honest.</p>
                     <div class="card-badges">
                         <span class="badge">Slice Metrics</span>
                         <span class="badge">Reproducible</span>
@@ -184,7 +195,15 @@
 
     <footer class="footer">
         <div class="container">
-            <p>© 2025 Abdul-Sobur Ayinde · <a href="contact.html">Get in touch</a></p>
+            <div class="footer-content">
+                <p>© 2026 Abdul-Sobur Ayinde</p>
+                <div class="footer-links">
+                    <a href="https://github.com/croesus245" target="_blank">GitHub</a>
+                    <a href="https://linkedin.com/in/abdulsobur-ayinde" target="_blank">LinkedIn</a>
+                    <a href="https://youtube.com/@croesus_py" target="_blank">YouTube</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+            </div>
         </div>
     </footer>
 

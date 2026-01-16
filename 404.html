@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 — Page Not Found</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .error-page {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 20px;
+        }
+        .error-content {
+            max-width: 500px;
+        }
+        .error-code {
+            font-size: 120px;
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1;
+            margin-bottom: 16px;
+        }
+        .error-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        .error-message {
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+        }
+        .error-links {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
+    
+    <header class="header">
+        <div class="header-container">
+            <div class="header-left">
+                <a href="index.html" class="logo">Abdul-Sobur Ayinde</a>
+                <span class="role">ML Systems Engineer</span>
+            </div>
+            <nav class="nav">
+                <a href="work.html" class="nav-link">Work</a>
+                <a href="proof.html" class="nav-link">Proof</a>
+                <a href="writing.html" class="nav-link">Writing</a>
+                <a href="resume.pdf" class="nav-link" target="_blank">Resume</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+            <div class="header-right">
+                <a href="mailto:abdulsobur245@gmail.com" class="email-link">abdulsobur245@gmail.com</a>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content" class="error-page">
+        <div class="error-content">
+            <div class="error-code">404</div>
+            <h1 class="error-title">Page not found</h1>
+            <p class="error-message">
+                The page you're looking for doesn't exist or was moved. 
+                Maybe I broke something. Wouldn't be the first time.
+            </p>
+            <div class="error-links">
+                <a href="index.html" class="btn btn-primary">Back to Home</a>
+                <a href="work.html" class="btn btn-outline">View Projects</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>© 2026 Abdul-Sobur Ayinde</p>
+                <div class="footer-links">
+                    <a href="https://github.com/croesus245" target="_blank">GitHub</a>
+                    <a href="https://linkedin.com/in/abdulsobur-ayinde" target="_blank">LinkedIn</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -6,6 +6,16 @@
     <title>Writing — Abdul-Sobur Ayinde</title>
     <meta name="description" content="Technical writing on ML systems, evaluation design, and LLM security.">
     
+    <!-- Open Graph -->
+    <meta property="og:title" content="Writing — Abdul-Sobur Ayinde">
+    <meta property="og:description" content="Notes on ML systems: offline metrics, eval suites, LLM security.">
+    <meta property="og:image" content="https://croesusml.vercel.app/assets/profile.jpg">
+    <meta property="og:url" content="https://croesusml.vercel.app/writing.html">
+    <meta property="og:type" content="website">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -13,6 +23,8 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
+    
     <header class="header">
         <div class="header-container">
             <div class="header-left">
@@ -44,11 +56,11 @@
         </nav>
     </header>
 
-    <main class="page-content">
+    <main id="main-content" class="page-content">
         <div class="container">
             <div class="page-header">
                 <h1 class="page-title">Writing</h1>
-                <p class="page-subtitle">Notes from building things that broke.</p>
+                <p class="page-subtitle">Things I figured out the hard way. Mostly notes to future me.</p>
             </div>
 
             <div class="writing-list">
@@ -62,10 +74,10 @@
                     <h2 class="writing-title-large">Why Offline Metrics Lie</h2>
                     <p class="writing-subtitle-large">An experiment in deceptive validation</p>
                     <p class="writing-excerpt">
-                        Built a churn model that hit 0.92 AUC on holdout. Deployed it. Watched it fail spectacularly on month-2 data. 
-                        Here's why stratified random splits hide temporal drift, and how I redesigned my eval suite to catch this before production.
+                        On a personal project, I got 0.92 AUC on holdout. Tested on newer data. Watched it drop to 0.76. 
+                        This is what I learned about why random splits hide temporal drift, and how I think about evaluation now.
                     </p>
-                    <p class="writing-takeaway"><strong>Key takeaway:</strong> Time splits or you're lying to yourself.</p>
+                    <p class="writing-takeaway"><strong>Main point:</strong> Time splits or you're lying to yourself.</p>
                     <div class="writing-lesson-large">
                         <strong>What I'd do differently:</strong> Use time-based splits from day one. Never trust random holdout again. Add a "future simulation" test that holds out the most recent 20% by timestamp.
                     </div>
@@ -82,10 +94,10 @@
                     <h2 class="writing-title-large">How I Design Eval Suites and CI Gates</h2>
                     <p class="writing-subtitle-large">A practical template you can steal</p>
                     <p class="writing-excerpt">
-                        Every model I ship passes 4 gates: slice regression (no subgroup drops > 3%), calibration check (ECE < 0.1), 
-                        latency test (p95 < threshold), and cost ceiling (< $X per 1k predictions). Here's the exact YAML config and why each gate exists.
+                        The eval framework I built for my projects. Four checks: subgroup regression, calibration, latency, and cost. 
+                        Sharing the YAML config and my reasoning—steal whatever's useful.
                     </p>
-                    <p class="writing-takeaway"><strong>Key takeaway:</strong> CI gates are the only defense against silent model regression.</p>
+                    <p class="writing-takeaway"><strong>Main point:</strong> CI gates are the only defense against silent model regression.</p>
                     <div class="writing-lesson-large">
                         <strong>What I'd do differently:</strong> Add distribution shift simulation as a 5th gate. Synthetically perturb the test set and require graceful degradation.
                     </div>
@@ -100,12 +112,12 @@
                         <span class="writing-read-time">10 min read</span>
                     </div>
                     <h2 class="writing-title-large">Security Failures in LLM Apps</h2>
-                    <p class="writing-subtitle-large">What I learned from 100+ attack tests</p>
+                    <p class="writing-subtitle-large">What I learned from attacking my own RAG system</p>
                     <p class="writing-excerpt">
-                        Prompt injection, indirect injection via documents, tool abuse, PII exfiltration. I tested them all against a secure multi-tenant RAG system. 
-                        Here's what worked, what didn't, and the 4 defense layers that survived real adversarial pressure.
+                        I built SecureRAG and then spent time trying to break it. Prompt injection, data exfiltration, tool abuse. 
+                        This is what I learned about LLM security by thinking like an attacker.
                     </p>
-                    <p class="writing-takeaway"><strong>Key takeaway:</strong> Assume the LLM is compromised. Design permissions as if it's an untrusted user.</p>
+                    <p class="writing-takeaway"><strong>Main point:</strong> Assume the LLM is compromised. Design permissions as if it's an untrusted user.</p>
                     <div class="writing-lesson-large">
                         <strong>What I'd do differently:</strong> Assume the model is compromised from the start. Design the permission system as if the LLM is an untrusted user, not a trusted component.
                     </div>
@@ -117,7 +129,15 @@
 
     <footer class="footer">
         <div class="container">
-            <p>© 2025 Abdul-Sobur Ayinde · <a href="contact.html">Get in touch</a></p>
+            <div class="footer-content">
+                <p>© 2026 Abdul-Sobur Ayinde</p>
+                <div class="footer-links">
+                    <a href="https://github.com/croesus245" target="_blank">GitHub</a>
+                    <a href="https://linkedin.com/in/abdulsobur-ayinde" target="_blank">LinkedIn</a>
+                    <a href="https://youtube.com/@croesus_py" target="_blank">YouTube</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+            </div>
         </div>
     </footer>
 

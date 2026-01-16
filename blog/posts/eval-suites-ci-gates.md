@@ -8,7 +8,9 @@
 
 Your model passed code review. Tests are green. Time to merge?
 
-Not yet. That PR might have just broken your model's performance on 15% of your users.
+Maybe not. I built this eval framework for my FraudShield project to catch regressions before they reach the "production" environment (it's synthetic data, but the principle matters).
+
+Here's how I think about evaluation gates.
 
 ## The Problem
 
@@ -17,15 +19,7 @@ ML systems have two kinds of bugs:
 1. **Code bugs:** The function throws an exception
 2. **Model bugs:** The function returns the wrong answer
 
-Traditional CI catches #1. It completely misses #2.
-
-I've seen PRs that:
-- Improved overall accuracy by 0.5%
-- Degraded performance on high-value users by 12%
-- Made latency 3x worse
-- Broke calibration entirely
-
-All tests green. All reviews approved. All users unhappy.
+Traditional CI catches #1. It misses #2 entirely.
 
 ## The Solution: Eval Gates
 

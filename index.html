@@ -4,12 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Abdul-Sobur Ayinde — ML Systems Engineer</title>
-    <meta name="description" content="ML Systems Engineer building production-grade ML systems with measurable proof. CI-gated evals, drift runbooks, attack test suites, and documented failure modes.">
+    <meta name="description" content="ML Systems Engineer. Fraud detection, LLM security, benchmarks. Learning projects with eval harnesses, drift monitoring, and documented failures.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="apple-touch-icon" href="assets/favicon.png">
     
     <!-- Open Graph -->
     <meta property="og:title" content="Abdul-Sobur Ayinde — ML Systems Engineer">
-    <meta property="og:description" content="Production-grade ML systems. Benchmarked. Tested. Documented.">
+    <meta property="og:description" content="ML systems that don't hide their failures. Benchmarked. Tested. Documented.">
     <meta property="og:type" content="website">
+    <meta property="og:image" content="assets/profile.jpg">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -54,13 +59,18 @@
         </nav>
     </header>
 
-    <main>
+    <main id="main-content">
         <!-- Hero Section -->
         <section class="hero">
             <div class="container">
-                <h1 class="hero-headline">I build production-grade ML systems with measurable proof.</h1>
-                <p class="hero-tagline">Systems that score in 50ms, defend against injection, and document their failures.</p>
-                <p class="hero-truth-anchor">Benchmarks from synthetic load tests. Methodology and artifacts linked.</p>
+                <div class="hero-intro">
+                    <img src="assets/profile.jpg" alt="Abdul-Sobur Ayinde" class="profile-photo profile-photo-large">
+                    <div class="hero-intro-text">
+                        <h1 class="hero-headline">I build ML systems and try to make them not break in production.</h1>
+                        <p class="hero-tagline">Fraud detection, secure RAG, benchmarks. Each one taught me something the hard way.</p>
+                    </div>
+                </div>
+                <p class="hero-truth-anchor">These are learning projects with synthetic data. Benchmarks and methodology are documented so you can verify.</p>
                 <div class="hero-cta-top">
                     <a href="proof.html" class="btn btn-primary">View Proof Artifacts →</a>
                 </div>
@@ -70,7 +80,7 @@
                     <article class="flagship-card">
                         <span class="card-lane">MLOps</span>
                         <h2 class="card-title">FraudShield</h2>
-                        <p class="card-description">Real-time fraud scoring benchmarked at ~1.2K TPS (p95 ≈ 45ms, synthetic load test). Handles delayed labels (30–90 days), drift detection, and incident runbooks.</p>
+                        <p class="card-description">Fraud scoring API I built to learn how real systems handle delayed labels and drift. Got it to ~1.2K TPS on my VM. The interesting part is the label reconciliation—fraud labels arrive 30-90 days late.</p>
                         <div class="card-badges">
                             <span class="badge">CI-Eval</span>
                             <span class="badge">Drift</span>
@@ -88,7 +98,7 @@
                     <article class="flagship-card">
                         <span class="card-lane">LLM/GenAI</span>
                         <h2 class="card-title">SecureRAG</h2>
-                        <p class="card-description">Multi-tenant document Q&A with prompt injection defense and tool sandboxing. 120+ attack tests. 0% exfil success rate. Every response scored for faithfulness.</p>
+                        <p class="card-description">RAG system where I focused on security instead of just retrieval metrics. Wrote 120+ attack tests myself. Some injections still get through (2%)—I document what fails.</p>
                         <div class="card-badges">
                             <span class="badge">Attack Tests</span>
                             <span class="badge">Faithfulness</span>
@@ -105,7 +115,7 @@
                     <article class="flagship-card">
                         <span class="card-lane">Research</span>
                         <h2 class="card-title">ShiftBench</h2>
-                        <p class="card-description">Skin lesion classification with explicit temporal (2015–2018 → 2019–2022) and demographic splits. Calibration-aware evaluation. Honest negative results.</p>
+                        <p class="card-description">Skin lesion benchmark that doesn't hide distribution shift. Train on old data, test on new data. Results are worse than random splits suggest—that's the point.</p>
                         <div class="card-badges">
                             <span class="badge">Slice Metrics</span>
                             <span class="badge">Reproducible</span>
@@ -130,14 +140,37 @@
         <section class="section section-alt">
             <div class="container">
                 <div class="quick-proof">
-                    <h2 class="quick-proof-title">Every project ships with:</h2>
+                    <h2 class="quick-proof-title">What I include with each project:</h2>
                     <div class="proof-badges-row">
-                        <span class="proof-badge">✓ CI-Gated Evals</span>
-                        <span class="proof-badge">✓ Drift Runbooks</span>
-                        <span class="proof-badge">✓ Attack Test Suites</span>
-                        <span class="proof-badge">✓ Cost Reports</span>
-                        <span class="proof-badge">✓ Model Cards</span>
-                        <span class="proof-badge">✓ Postmortems</span>
+                        <span class="proof-badge">✓ Eval scripts that run in CI</span>
+                        <span class="proof-badge">✓ Drift monitoring setup</span>
+                        <span class="proof-badge">✓ Security tests (for LLM stuff)</span>
+                        <span class="proof-badge">✓ Cost estimates</span>
+                        <span class="proof-badge">✓ What went wrong docs</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="section" id="about">
+            <div class="container">
+                <div class="about-section">
+                    <div class="about-photo">
+                        <img src="assets/profile.jpg" alt="Abdul-Sobur Ayinde" class="profile-photo profile-photo-large">
+                    </div>
+                    <div class="about-content">
+                        <h2>About</h2>
+                        <p>
+                            I'm learning ML engineering by building things and breaking them. These projects are how I teach myself what production systems actually need—stuff like handling delayed labels, defending against prompt injection, and not lying to myself with random train/test splits.
+                        </p>
+                        <p>
+                            I try to document failures, not just successes. The postmortems are real.
+                        </p>
+                        <div style="margin-top: 20px;">
+                            <a href="contact.html" class="btn btn-primary">Get in Touch →</a>
+                            <a href="https://croesus-portfolio.vercel.app/" class="btn btn-outline" target="_blank">More About Me →</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -146,7 +179,15 @@
 
     <footer class="footer">
         <div class="container">
-            <p>© 2025 Abdul-Sobur Ayinde · <a href="contact.html">Get in touch</a></p>
+            <div class="footer-content">
+                <p>© 2026 Abdul-Sobur Ayinde</p>
+                <div class="footer-links">
+                    <a href="https://github.com/croesus245" target="_blank" aria-label="GitHub">GitHub</a>
+                    <a href="https://linkedin.com/in/abdulsobur-ayinde" target="_blank" aria-label="LinkedIn">LinkedIn</a>
+                    <a href="https://youtube.com/@croesus_py" target="_blank" aria-label="YouTube">YouTube</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+            </div>
         </div>
     </footer>
 

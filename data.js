@@ -10,8 +10,8 @@ const PORTFOLIO = {
     // ============================================
     name: "Abdul-Sobur Ayinde",
     role: "ML Systems Engineer",
-    headline: "I build production-grade ML systems with measurable proof.",
-    tagline: "Systems that score in 50ms, defend against injection, and document their failures.",
+    headline: "I build ML systems and try to make them not break in production.",
+    tagline: "Fraud detection, secure RAG, benchmarks. Learning projects with synthetic data.",
     truthAnchor: "Benchmarks from synthetic load tests. Methodology and artifacts linked.",
     email: "hello@yourdomain.com",
     resume: "/assets/resume.pdf",
@@ -24,7 +24,7 @@ const PORTFOLIO = {
     
     location: "San Francisco, PT",
     
-    about: "I build ML systems that handle real-world constraints: delayed labels, adversarial inputs, and distribution shift. Every project I ship includes an eval harness, monitoring playbook, and documented failure modes.",
+    about: "Learning ML engineering by building things and breaking them. These projects are how I teach myself what production systems actually need.",
     
     cta: "Open to roles in: ML Systems · LLM Engineering · MLOps · Applied Research",
 

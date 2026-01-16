@@ -1,0 +1,12 @@
+# robots.txt for croesusml.vercel.app
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://croesusml.vercel.app/sitemap.xml
+
+# Disallow dev/build artifacts
+Disallow: /.venv/
+Disallow: /.git/
+Disallow: /.vscode/
