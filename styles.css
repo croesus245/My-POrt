@@ -233,6 +233,8 @@ button {
     gap: 5px;
     padding: 12px;
     cursor: pointer;
+    background: none;
+    border: none;
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
     z-index: 101;
