@@ -18,7 +18,7 @@ const PORTFOLIO = {
     
     links: {
         github: "https://github.com/croesus245",
-        linkedin: "https://linkedin.com/in/abdulsobur-ayinde",
+        linkedin: "https://www.linkedin.com/in/ayinde-abdul-sobur-olayinka-604205272/",
         twitter: null
     },
     
