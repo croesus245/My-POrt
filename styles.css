@@ -915,7 +915,11 @@ button {
     }
     
     .hamburger {
-        display: flex;
+        display: flex !important;
+        flex-direction: column;
+        gap: 5px;
+        align-items: center;
+        justify-content: center;
     }
     
     .header-right .btn-outline {
